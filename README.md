@@ -1,0 +1,2 @@
+# TestCapitalComJSPW
+playwrightTests
