@@ -101,12 +101,13 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
         await page.waitForLoadState('networkidle');
         await header.clickPositionTrading()
         await bannerBtn.clickDownloadOnAppStoreBtn();
-        // await page.waitForLoadState('networkidle');
-        await page.waitForLoadState('load')
+        await page.waitForNavigation();
+        await page.waitForTimeout(3000)
         expect(await bannerBtn.LogoAppStore).toBeVisible();
         expect(await bannerBtn.IconCapital).toBeVisible();
         expect(await bannerBtn.ProductNameOnAppstore).toBeVisible();
         expect(await bannerBtn.LinkCapitalComOnAppstore).toBeVisible();
+        await page.waitForTimeout(1000);
         await page.goBack();
     })
 
@@ -118,7 +119,6 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
         await page.waitForLoadState('networkidle');
         await header.clickPositionTrading()
         await bannerBtn.clickDownloadOnGooglePlayLink();
-        await page.waitForLoadState('load')
         expect(await bannerBtn.LogoGooglePlay).toBeVisible();
         expect(await bannerBtn.ProdactNameOnGoogleplay).toHaveText(/Online Broker - Capital.com/);
         expect(await bannerBtn.LinkCapitalComOnGoogleplay).toBeVisible();
@@ -135,8 +135,8 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
         await page.waitForLoadState('networkidle');
         await header.clickPositionTrading()
         await bannerBtn.clickExploreWebPlatformLink();
-        await page.waitForLoadState('load');
-        // await page.waitForNavigation()
+        // await page.waitForLoadState('load');
+        await page.waitForNavigation();
         expect(await signup.FormSignUpOnPaltform).toBeVisible();
         expect(await signup.LoginLinkFormOnPlatform).toBeVisible();
         expect(await signup.EmailOnPlatform).toHaveAttribute("type", "email");
