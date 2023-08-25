@@ -127,7 +127,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
 
     })
 
-    test.only(`TC_11.03.04_06_UnReg  > Test button [Explore Web Platform] in the block "Sign up and trade smart today" on '${language}' language`, async () => {
+    test(`TC_11.03.04_06_UnReg  > Test button [Explore Web Platform] in the block "Sign up and trade smart today" on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
         signup = new SignUpPage(page);
