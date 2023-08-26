@@ -13,6 +13,14 @@ class LoginPage {
       this.ForgotPasswordLink = page.locator('[class="l_btn_forgot"]');
       this.SignUpLinkForm = page.locator(".form-container-white > .form-container-small-header > p > .l_btn_signup");
       this.CloseLoginFormBtn = page.locator('#l_overlay .form-container-white .button-cleared');
+      //Form Login on Platform
+      this.FormLoginOnPlatform = page.locator('cdk-dialog-container#login');
+      this.HeaderNameLoginOnPlatform = page.locator('.modal__header-title');
+      this.SignUpLinkFormOnPlatform = page.locator(':nth-child(1) > .txt__link');
+      this.EmailOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(3)');
+      this.PasswordOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(5)');
+      this.ForgotPasswordLinkOnPlatform = page.locator('.txt.txt_link');
+      this.BtnContinueOnPlatform = page.locator('.button-main')
     }
   
     async visit() {
@@ -44,7 +52,16 @@ class LoginPage {
 
   async FormLoginBeVisible() {
     try {
-      await this.expect(FormLogIn).toBeVisible();
+      await this.expect(FormLogIn).isVisible();
+  } catch (error) {
+      console.log("Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+      throw new Error();
+  }
+  }
+
+  async FormLoginOnPlatformBeVisible() {
+    try {
+      await this.expect(FormLoginOnPlatform).isVisible();
   } catch (error) {
       console.log("Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
       throw new Error();
