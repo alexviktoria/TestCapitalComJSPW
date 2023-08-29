@@ -169,7 +169,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         await header.hoverCountryAndLang();
         await header.clickDropdownCountry();
         await header.clickGetCountry();
-        await header.hoverCountryAndLang();
+        await header.hoverCountryAndLang();''
         await header.clickGetLanguage();
 
     });
