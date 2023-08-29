@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test --workers 1 --headed",
-    "test:11-03-04": "npx playwright test /e2e/education/US_11-03-04.spec.js --reporter=line,allure-playwright",
+    "test:11-03-04": "npx playwright test /e2e/education/US_11-03-04.spec.js --reporter=line,allure-playwright --workers 1",
     "test:11-02-02": "npx playwright test /e2e/education/US_11-02-02.spec.js --reporter=line,allure-playwright --workers 1 --debug",
     "test:reporter": "npx playwright test --reporter=line,allure-playwright --workers",
     "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
