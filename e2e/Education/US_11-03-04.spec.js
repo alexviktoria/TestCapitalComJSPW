@@ -75,6 +75,24 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
 //         expect(await signup.PolicyLink).toBeVisible();
 //         await signup.clickCloseSignUpFormBtn();
 //     });
+    test(`TC_11.03.04_02_UnReg  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
+        bannerBtn = new BannerBtn(page);
+        header = new Header(page);
+        signup = new SignUpPage(page);
+        await header.getEducationMenu.hover();
+        await page.waitForLoadState('networkidle');
+        await header.clickPositionTrading()
+        await bannerBtn.clickTryDemoBtnOnMainBanner()
+        expect(await signup.FormSignUp).toBeVisible();
+        expect(await signup.LoginLinkForm).toBeVisible();
+        expect(await signup.UserName).toHaveAttribute("type", "email");
+        expect(await signup.Password).toHaveAttribute("type", "password");
+        expect(await signup.ContinueButton).toBeVisible();
+        expect(await signup.TextContinueButton()).toMatch(/Continue/)
+        expect(await signup.PolicyLink).toBeVisible();
+        await signup.clickCloseSignUpFormBtn();
+    });
+
 
 //     test(`TC_11.03.04_04_UnReg  > Test button [Download on the App Store] in the block "Sign up and trade smart today"  on '${language}' language`, async () => {
 //         bannerBtn = new BannerBtn(page);
