@@ -21,6 +21,7 @@ class LoginPage {
       this.PasswordOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(5)');
       this.ForgotPasswordLinkOnPlatform = page.locator('.txt.txt_link');
       this.BtnContinueOnPlatform = page.locator('.button-main')
+      this.LogoCapitalOnPlatform = page.locator('a.logo')
     }
   
     async visit() {
