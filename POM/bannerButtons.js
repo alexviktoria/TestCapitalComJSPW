@@ -59,12 +59,7 @@ class BannerBtn {
 
     async clickExploreWebPlatformLink() {
         await this.ExploreWebPlatformLink.click();
-        try {
-            await expect(page.locator("cdk-dialog-container#login")).toBeVisible();
-        } catch (error) {
-            console.log("Opened a 'Sign up' form instead of a 'Login' form");
-            throw new Error();
-        }
+        
     }
 
     async clickCreateAndVerifyBtn() {

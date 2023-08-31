@@ -16,8 +16,8 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "Deutsch"
-const country = "Germany";
+const language = "English"
+const country = "United Kingdom";
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
 
@@ -178,10 +178,13 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         // open capital.com
         await page.goto("/");
         // user unauthorization
-        await login.loginAndContinue(testData.email, testData.password);
-        await page.waitForLoadState('domcontentloaded');
+        await login.clickBtnLogIn();
+        await login.validLogin(testData.email, testData.password);
+        // await login.ContinueButton.waitFor();
+        await login.ContinueButton.click();
+        await page.waitForLoadState('networkidle');
         await page.goBack();
-        await page.waitForLoadState('domcontentloaded');
+        await page.waitForLoadState('networkidle');
         await login.logoutUser();
         // select country and language
         await header.hoverCountryAndLang();
@@ -336,9 +339,11 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
         await page.goto("/");
         // user unauthorization
         await login.loginAndContinue(testData.email, testData.password);
-        await page.waitForLoadState('domcontentloaded');
+        await login.ContinueButton.waitFor();
+        await login.ContinueButton.dblclick();
+        await page.waitForLoadState('networkidle');
         await page.goBack();
-        await page.waitForLoadState('domcontentloaded');
+        await page.waitForLoadState('networkidle');
         //  await login.logoutUser();
         // select country and language
         await header.hoverCountryAndLang();
