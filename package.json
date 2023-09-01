@@ -7,7 +7,7 @@
     "test": "playwright test --workers 1 --headed",
     "test:11-03-04": "npx playwright test /e2e/education/US_11-03-04.spec.js --reporter=line,allure-playwright --workers 1",
     "test:11-02-02": "npx playwright test /e2e/education/US_11-02-02.spec.js --reporter=line,allure-playwright --workers 1 --debug",
-    "test:report": "npx playwright test --reporter=line,allure-playwright --workers 1",
+    "test:report": "npx playwright test --reporter=allure-playwright --workers 1",
     "allure:report": "allure generate ./allure-results -o allure-report --clean && allure open",
     "allure:clear": "rm -r allure-results/ allure-report || true",
     "APITests": "npx playwright test --grep @API"
