@@ -408,88 +408,63 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
     test(`TC_11.03.04_04_Auth  > Test button [Download on the App Store] in the block "Sign up and trade smart today"  on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
-        login = new LoginPage(page);
         await header.getEducationMenu.hover();
         await page.waitForLoadState('networkidle');
-        await header.clickPositionTrading();
-        await page.locator('.onelink-mobile-url').first().click();
-        await page.waitForLoadState('networkidle');
-        await expect(page.getByRole('link', { name: 'App Store' })).toBeVisible();
-        await expect(page.locator('picture#ember3')).toBeVisible();
-        expect(await page.getByRole('heading', { name: 'Capital.com: Trading & Finance 17+' })).toBeVisible();
-        expect(await page.getByRole('heading', { name: 'Capital Com SV Investments Limited' })).toBeVisible();
+        await header.clickPositionTrading()
+        await bannerBtn.clickDownloadOnAppStoreBtn();
+        await page.waitForNavigation();
+        await page.waitForTimeout(3000)
+        expect(await bannerBtn.LogoAppStore).toBeVisible();
+        expect(await bannerBtn.IconCapital).toBeVisible();
+        expect(await bannerBtn.ProductNameOnAppstore).toBeVisible();
+        expect(await bannerBtn.LinkCapitalComOnAppstore).toBeVisible();
+        await page.waitForTimeout(1000);
         await page.goBack();
     });
 
     test(`TC_11.03.04_05_Auth  > Test button [Get it on Google Play] in the block "Sign up and trade smart today" on '${language}' language`, async () => {
+        bannerBtn = new BannerBtn(page);
         header = new Header(page);
-        login = new LoginPage(page);
         await header.getEducationMenu.hover();
         await page.waitForLoadState('networkidle');
-        const isVisiblePosition = page.locator('a[data-type="nav_id528"]');
-
-        if (await isVisiblePosition.isVisible()) {
-            await isVisiblePosition.click();
-        } else {
-            console.log(`For test on '${language}' language the page "Education->Position Trading" doesn't exist on production`);
-            test.skip();
-        }
-        try {
-            await expect(page.locator('a.f0UV3d')).toBeVisible();
-            await expect(page.locator('h1.Fd93Bb.F5UCq.p5VxAd')).toHaveText(/Online Broker - Capital.com/);
-            await expect(page.locator('div.Vbfug.auoIOc')).toBeVisible();
-            await page.goto('https://capital.com/position-trading');
-        } catch (error) {
-            console.log(`The link to App Store instead of Google Play`)
-            throw new Error();
-        }
+        await header.clickPositionTrading()
+        await bannerBtn.clickDownloadOnGooglePlayLink();
+        expect(await bannerBtn.LogoGooglePlay).toBeVisible();
+        expect(await bannerBtn.ProdactNameOnGoogleplay).toHaveText(/Online Broker - Capital.com/);
+        expect(await bannerBtn.LinkCapitalComOnGoogleplay).toBeVisible();
+        await page.waitForTimeout(3000);
+        await page.goBack();
     });
 
     test(`TC_11.03.04_06_Auth  > Test button [Explore Web Platform] in the block "Sign up and trade smart today" on '${language}' language`, async () => {
+        bannerBtn = new BannerBtn(page);
         header = new Header(page);
-        login = new LoginPage(page);
         await header.getEducationMenu.hover();
         await page.waitForLoadState('networkidle');
-        const isVisiblePosition = page.locator('a[data-type="nav_id528"]');
-
-        if (await isVisiblePosition.isVisible()) {
-            await isVisiblePosition.click();
-        } else {
-            console.log(`For test on '${language}' language the page "Education->Position Trading" doesn't exist on production`);
-            test.skip();
-        }
-        await page.locator('[data-type="banner_capital_platform"]').click();
+        await header.clickPositionTrading()
+        await bannerBtn.clickExploreWebPlatformLink();
         // await page.waitForLoadState('load');
         // await page.waitForLoadState('networkidle');
         await page.waitForTimeout(3000);
         expect(await page).toHaveURL('https://capital.com/trading/platform/');
-        await page.waitForTimeout(3000);
-        // expect(await page.locator('object.logo')).toBeVisible();
+        await expect(login.LogoCapitalOnPlatform).toBeVisible();
         await page.goBack();
     });
 
     test(`TC_11.03.04_07_Auth  > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" on '${language}' language`, async () => {
+        bannerBtn = new BannerBtn(page);
         header = new Header(page);
-        login = new LoginPage(page);
-        bannerBtn = new BannerBtn(page)
         await header.getEducationMenu.hover();
-        await page.waitForTimeout(5000);
-        const isVisiblePosition = page.locator('a[data-type="nav_id528"]');
-
-        if (await isVisiblePosition.isVisible()) {
-            await isVisiblePosition.click();
-        } else {
-            console.log(`For test on '${language}' language the page "Education->Position Trading" doesn't exist on production`);
-            test.skip();
-        }
+        await page.waitForLoadState('networkidle');
+        await header.clickPositionTrading()
         await bannerBtn.clickCreateAndVerifyBtn();
         // await page.waitForLoadState('load');
         // await page.waitForLoadState('networkidle');
         await page.waitForTimeout(3000);
         // await page.waitForURL('https://capital.com/trading/platform/');
         await expect(page).toHaveURL('https://capital.com/trading/platform/');
-        // expect(await page.locator('object.logo')).toBeVisible();
-        await page.waitForTimeout(3000);
+        await expect(login.LogoCapitalOnPlatform).toBeVisible();
+        // await page.waitForTimeout(3000);
         await page.goBack();
     });
 })
