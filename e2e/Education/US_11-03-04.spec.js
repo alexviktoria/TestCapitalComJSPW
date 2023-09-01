@@ -44,7 +44,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
         await header.clickGetLanguage();
     });
 
-    test.only(`TC_11.03.04_01_UnReg  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
+    test(`TC_11.03.04_01_UnReg  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
         signup = new SignUpPage(page);
@@ -176,7 +176,6 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
 });
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Role", () => {
-    test.use({ locale: 'en-GB' });
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -202,7 +201,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
 
     });
 
-    test.only(`TC_11.03.04_01_UnAuth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
+    test(`TC_11.03.04_01_UnAuth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
         login = new LoginPage(page);
@@ -361,7 +360,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
 
     });
 
-    test.only(`TC_11.03.04_01_Auth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
+    test(`TC_11.03.04_01_Auth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
         login = new LoginPage(page);
