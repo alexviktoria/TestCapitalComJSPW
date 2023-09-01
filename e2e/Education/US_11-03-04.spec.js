@@ -22,8 +22,8 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "English"
-const country = "United Kingdom";
+const language = "العَرَبِيَّة"
+const country = "United Arab Emirates";
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
     // test.use({ locale: 'en-GB' });
