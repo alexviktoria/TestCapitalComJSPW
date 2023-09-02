@@ -6,4 +6,4 @@ node_modules/
 allure-report/
 allure-results/
 # for macOS
-.DS_Story
+.DS_Store
