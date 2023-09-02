@@ -5,5 +5,6 @@ node_modules/
 /playwright/.cache/
 allure-report/
 allure-results/
+
 # for macOS
 .DS_Store
