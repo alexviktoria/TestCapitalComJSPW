@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"skipped","Tue Aug 29 17:35:36 EET 2023","Tue Aug 29 17:36:01 EET 2023","24506","chromium","","US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role","","","TC_11.03.04_01_UnReg  > Test button [Start Trading] in Main banner on 'Deutsch' language",""
-"skipped","Tue Aug 29 17:36:01 EET 2023","Tue Aug 29 17:36:03 EET 2023","2218","chromium","","US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role","","","TC_11.03.04_02_UnReg  > Test button [Try Demo] in Main banner on 'Deutsch' language",""

@@ -9,7 +9,7 @@ class LoginPage {
       this.Btnlogout = page.locator('.logout-user');
       this.FormLogIn = page.locator("#l_overlay > .form-container-white");
       this.HeaderNameLogIn = page.locator("[class='form-container-small-header'] > .h1");
-      this.LogMeAfter = page.locator("input[name=l_rem]");
+      this.LogMeAfter = page.locator("label.checkbox");
       this.ForgotPasswordLink = page.locator('[class="l_btn_forgot"]');
       this.SignUpLinkForm = page.locator(".form-container-white > .form-container-small-header > p > .l_btn_signup");
       this.CloseLoginFormBtn = page.locator('#l_overlay .form-container-white .button-cleared');
@@ -21,6 +21,7 @@ class LoginPage {
       this.PasswordOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(5)');
       this.ForgotPasswordLinkOnPlatform = page.locator('.txt.txt_link');
       this.BtnContinueOnPlatform = page.locator('.button-main')
+      this.LogoCapitalOnPlatform = page.locator('a.logo')
     }
   
     async visit() {
@@ -30,7 +31,7 @@ class LoginPage {
     async validLogin(email, password) {
       await this.UserName.fill(email);
       await this.Password.fill(password);
-      await this.ContinueButton.click({force: true});
+      // await this.ContinueButton.click();
     }
 
     async clickBtnLogIn() {
@@ -40,8 +41,8 @@ class LoginPage {
   async loginAndContinue(email, password) {
     await this.clickBtnLogIn();
     await this.validLogin(email, password);
-    await this.ContinueButton.waitFor();
-    await this.ContinueButton.click();
+    await this.LogMeAfter.setChecked();
+    // await this.ContinueButton.click();
   }
 
   async logoutUser() {
