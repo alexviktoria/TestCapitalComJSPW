@@ -16,8 +16,7 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "English"
-const country = "United Kingdom";
+const language = "fr"
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -443,7 +442,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
         await page.goBack();
     });
 
-    test.only(`TC_11.03.04_07_Auth  > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" on '${language}' language`, async () => {
+    test(`TC_11.03.04_07_Auth  > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
         await header.getEducationMenu.hover();

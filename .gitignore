@@ -144,3 +144,4 @@ dist
 /playwright/.cache/
 allure-results
 allure-report
+last-historyindex.html

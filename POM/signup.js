@@ -46,5 +46,9 @@ class SignUpPage {
     await this.CloseSignUpFormBtn.click();
   }
 
+  async signUpFormIsVisible() {
+    await this.FormSignUp.isVisible();
+  }
+
 }
 module.exports = { SignUpPage };
