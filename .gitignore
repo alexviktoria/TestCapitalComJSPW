@@ -6,6 +6,9 @@ node_modules/
 allure-report/
 allure-results/
 
+# for macOS
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -141,4 +144,3 @@ dist
 /playwright/.cache/
 allure-results
 allure-report
-
