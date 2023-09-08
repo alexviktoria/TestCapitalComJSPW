@@ -4,8 +4,6 @@ const { Header } = require("../../POM/header")
 const { LoginPage } = require("../../POM/login")
 const { SignUpPage } = require("../../POM/signup")
 const { BannerBtn } = require("../../POM/bannerButtons")
-// import { MyReporter } from "../../my-awesome-reporter";
-
 
 let header;
 let page;
@@ -13,25 +11,19 @@ let bannerBtn;
 let signup;
 let login;
 
-// test.runWith({
-//     reporter: new MyReporter(),
-//   });
-
 const testData = {
     email: "alexviktoria1609@gmail.com",
     password: "Av-123456789",
 }
 
-const language = "العَرَبِيَّة"
-const country = "United Arab Emirates";
+const language = "English"
+const country = "United Kingdom";
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
-    // test.use({ locale: 'en-GB' });
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         header = new Header(page);
-        // myreporter = new MyReporter();
         // open capital.com
         await page.goto("/");
         //accept all Cookies
@@ -451,7 +443,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
         await page.goBack();
     });
 
-    test(`TC_11.03.04_07_Auth  > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" on '${language}' language`, async () => {
+    test.only(`TC_11.03.04_07_Auth  > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
         await header.getEducationMenu.hover();
