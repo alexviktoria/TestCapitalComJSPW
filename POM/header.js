@@ -9,6 +9,7 @@ exports.Header = class Header {
         this.getMainLogo = page.locator('[class="cc-logo hideXs"]')
         this.getEducationMenu = page.locator('a[data-type="nav_id96"]')
         this.PositionTrading = page.locator('a[data-type="nav_id528"]')
+        this.SwingTrading = page.locator('a[data-type="nav_id529"]')
         this.SharesTrading = page.locator('a[data-type="nav_id106"]')
         this.CountryAndLang = page.locator('div .licLangSw__btn')
         this.DropdownCountry = page.getByRole("textbox")
@@ -51,6 +52,15 @@ exports.Header = class Header {
             await this.PositionTrading.click();
         } else {
             console.log(`For test on '${language}' language the page "Education->Position Trading" doesn't exist on production`);
+            test.skip();
+        }
+    }
+
+    async clickSwingTrading() {
+        if (await this.SwingTrading.isVisible()) {
+            await this.SwingTrading.click();
+        } else {
+            console.log(`For test on '${language}' language the page "Education->Swing Trading" doesn't exist on production`);
             test.skip();
         }
     }
