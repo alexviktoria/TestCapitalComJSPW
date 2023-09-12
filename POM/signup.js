@@ -1,3 +1,4 @@
+const { expect } = require("@playwright/test");
 class SignUpPage {
   constructor(page) {
     this.page = page;
@@ -38,7 +39,7 @@ class SignUpPage {
     await this.BtnSignUp.click();
   }
 
-  async  TextContinueButton() {
+  async TextContinueButton() {
     return await this.ContinueButton.innerText();
   }
 
@@ -47,7 +48,13 @@ class SignUpPage {
   }
 
   async signUpFormIsVisible() {
-    await this.FormSignUp.isVisible();
+    await expect(this.FormSignUp).toBeVisible();
+    await expect(this.LoginLinkForm).toBeVisible();
+    await expect(this.UserName).toHaveAttribute("type", "email");
+    await expect(this.Password).toHaveAttribute("type", "password");
+    await expect(this.ContinueButton).toBeVisible();
+    await expect(this.PolicyLink).toBeVisible();
+    await this.CloseSignUpFormBtn.click();
   }
 
 }

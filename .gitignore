@@ -1,14 +1,3 @@
-.idea/
-node_modules/
-/test-results/
-/playwright-report/
-/playwright/.cache/
-allure-report/
-allure-results/
-
-# for macOS
-.DS_Store
-
 # Logs
 logs
 *.log
@@ -144,4 +133,3 @@ dist
 /playwright/.cache/
 allure-results
 allure-report
-last-historyindex.html

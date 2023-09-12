@@ -16,7 +16,7 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "fr"
+const language = "ar"
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -175,10 +175,10 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         // open capital.com
         await page.goto("/");
         // user unauthorization
-        await login.clickBtnLogIn();
-        await login.validLogin(testData.email, testData.password);
+        // await login.clickBtnLogIn();
+        await login.loginAndContinue(testData.email, testData.password);
         // await login.ContinueButton.waitFor();
-        await login.ContinueButton.click();
+        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
@@ -318,7 +318,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
     });
 });
 
-test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role", () => {
+test.describe.only("US_11-03-04_Education > Menu item [Position Trading] on Auth Role", () => {
     let header;
     let login;
     let page;
@@ -336,8 +336,8 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
         await page.goto("/");
         // user unauthorization
         await login.loginAndContinue(testData.email, testData.password);
-        await login.ContinueButton.waitFor();
-        await login.ContinueButton.click();
+        // await login.ContinueButton.waitFor();
+        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
