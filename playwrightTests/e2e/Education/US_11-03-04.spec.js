@@ -16,7 +16,7 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "ar"
+const language = "es"
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -318,7 +318,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
     });
 });
 
-test.describe.only("US_11-03-04_Education > Menu item [Position Trading] on Auth Role", () => {
+test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role", () => {
     let header;
     let login;
     let page;
