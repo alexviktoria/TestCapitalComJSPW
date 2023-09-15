@@ -40,9 +40,6 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     headless: true,
     screenshot: 'only-on-failure',
-    launchOptions: {
-      args: ['--continue-on-page-error']
-    }
   },
   /* Configure projects for major browsers */
   projects: [
