@@ -133,3 +133,6 @@ dist
 /playwright/.cache/
 allure-results
 allure-report
+/test-results/
+/playwright-report/
+/playwright/.cache/
