@@ -21,8 +21,8 @@ class LinksFile {
         const randomLinks = await getRandomElements(linksFromFile, 3);
         for (let i = 0; i < randomLinks.length; i++) {
             await page.goto(randomLinks[i]);
-            // await bannerBtn.clickStartTradingBtnOnMainBanner();
-            // await signup.signUpFormIsVisible();
+            await bannerBtn.clickStartTradingBtnOnMainBanner();
+            await signup.signUpFormIsVisible();
 
             if (links.includes(randomLinks[i])) {
                 console.log(`Testing on the '${randomLinks[i]}' link was successfully completed`);

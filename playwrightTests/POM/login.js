@@ -42,7 +42,8 @@ class LoginPage {
   async loginAndContinue(email, password) {
     await this.clickBtnLogIn();
     await this.validLogin(email, password);
-    await this.LogMeAfter.first().setChecked();
+    await this.LogMeAfter.click();
+    // await this.ContinueButton.waitFor();
     await this.ContinueButton.click();
   }
 
@@ -52,7 +53,7 @@ class LoginPage {
 
   }
 
-  async LoginFotmIsVisible() {
+  async LoginFormIsVisible() {
     try {
       await expect(this.FormLogIn).toBeVisible();
       await expect(this.HeaderNameLogIn).toBeVisible();
@@ -64,7 +65,7 @@ class LoginPage {
       await expect(this.SignUpLinkForm).toBeVisible();
       await this.CloseLoginFormBtn.click();
     } catch (error) {
-      console.log("Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+      console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
       throw new Error();
     }
 
@@ -74,7 +75,7 @@ class LoginPage {
     try {
       await this.expect(FormLoginOnPlatform).isVisible();
     } catch (error) {
-      console.log("Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+      console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
       throw new Error();
     }
   }

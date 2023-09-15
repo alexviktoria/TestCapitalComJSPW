@@ -16,7 +16,7 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "es"
+const language = "en"
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -167,6 +167,14 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
 });
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Role", () => {
+    let header;
+    let login;
+    let page;
+    let bannerBtn;
+    const testData = {
+        email: "alexviktoria1609@gmail.com",
+        password: "Av-123456789",
+    }
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -341,7 +349,6 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
-        //  await login.logoutUser();
         // select country and language
         await header.hoverCountryAndLang();
         await header.clickDropdownCountry();

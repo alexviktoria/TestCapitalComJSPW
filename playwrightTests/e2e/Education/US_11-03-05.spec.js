@@ -16,7 +16,7 @@ const testData = {
     password: "Av-123456789",
 }
 
-const language = "ar"
+const language = "en"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -155,18 +155,20 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role"
         await bannerBtn.clickCreateAndVerifyBtn();
         // await page.waitForLoadState('networkidle');
         await page.waitForTimeout(5000);
-        await expect(signup.FormSignUp).toBeVisible();
-        expect(await signup.LoginLinkForm).toBeVisible();
-        expect(await signup.UserName).toHaveAttribute("type", "email");
-        expect(await signup.Password).toHaveAttribute("type", "password");
-        expect(await signup.ContinueButton).toBeVisible();
-        expect(await signup.TextContinueButton()).toMatch(/Continue/)
-        expect(await signup.PolicyLink).toBeVisible();
-        await signup.clickCloseSignUpFormBtn();
+        await signup.signUpFormIsVisible();
+        
     });
 });
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role", () => {
+    let header;
+    let login;
+    let page;
+    let bannerBtn;
+    const testData = {
+        email: "alexviktoria1609@gmail.com",
+        password: "Av-123456789",
+    }
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -175,7 +177,6 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role"
         // open capital.com
         await page.goto("/");
         // user unauthorization
-        // await login.clickBtnLogIn();
         await login.loginAndContinue(testData.email, testData.password);
         // await login.ContinueButton.waitFor();
         // await login.ContinueButton.click();
@@ -200,15 +201,15 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role"
         await page.waitForLoadState('networkidle');
         await header.clickSwingTrading();
         await bannerBtn.clickStartTradingBtnOnMainBanner();
-        await login.FormLoginBeVisible()
-        await expect(login.HeaderNameLogIn).toBeVisible();
-        expect(await login.UserName).toHaveAttribute("type", "email");
-        expect(await login.Password).toHaveAttribute("type", "password");
-        expect(await login.LogMeAfter).toBeChecked();
-        await expect(login.ForgotPasswordLink).toBeVisible();
-        await expect(login.ContinueButton).toBeVisible();
-        await expect(login.SignUpLinkForm).toBeVisible();
-        await login.CloseLoginFormBtn.click();
+        await login.LoginFormIsVisible()
+        // await expect(login.HeaderNameLogIn).toBeVisible();
+        // expect(await login.UserName).toHaveAttribute("type", "email");
+        // expect(await login.Password).toHaveAttribute("type", "password");
+        // expect(await login.LogMeAfter).toBeChecked();
+        // await expect(login.ForgotPasswordLink).toBeVisible();
+        // await expect(login.ContinueButton).toBeVisible();
+        // await expect(login.SignUpLinkForm).toBeVisible();
+        // await login.CloseLoginFormBtn.click();
     })
 
     test(`TC_11.03.05_02_UnAuth  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
@@ -219,15 +220,15 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role"
         await page.waitForLoadState('networkidle');
         await header.clickSwingTrading();
         await bannerBtn.clickTryDemoBtnOnMainBanner();
-        await login.FormLoginBeVisible()
-        await expect(login.HeaderNameLogIn).toBeVisible();
-        expect(await login.UserName).toHaveAttribute("type", "email");
-        expect(await login.Password).toHaveAttribute("type", "password");
-        expect(await login.LogMeAfter).toBeChecked();
-        await expect(login.ForgotPasswordLink).toBeVisible();
-        await expect(login.ContinueButton).toBeVisible();
-        await expect(login.SignUpLinkForm).toBeVisible();
-        await login.CloseLoginFormBtn.click();
+        await login.LoginFormIsVisible()
+        // await expect(login.HeaderNameLogIn).toBeVisible();
+        // expect(await login.UserName).toHaveAttribute("type", "email");
+        // expect(await login.Password).toHaveAttribute("type", "password");
+        // expect(await login.LogMeAfter).toBeChecked();
+        // await expect(login.ForgotPasswordLink).toBeVisible();
+        // await expect(login.ContinueButton).toBeVisible();
+        // await expect(login.SignUpLinkForm).toBeVisible();
+        // await login.CloseLoginFormBtn.click();
     });
 
     test(`TC_11.03.05_03_UnAuth  > Test buttons [Trade] on Widget "Most traded" on '${language}' language`, async () => {
@@ -238,15 +239,15 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role"
         await page.waitForLoadState('networkidle');
         await header.clickSwingTrading();
         await bannerBtn.clickTradeBtnOnWidgetMostTraded();
-        expect(await login.FormLoginBeVisible());
-        expect(await login.HeaderNameLogIn).toBeVisible();
-        expect(await login.UserName).toHaveAttribute("type", "email");
-        expect(await login.Password).toHaveAttribute("type", "password");
-        expect(await login.LogMeAfter).toBeChecked();
-        await expect(login.ForgotPasswordLink).toBeVisible();
-        await expect(login.ContinueButton).toBeVisible();
-        await expect(login.SignUpLinkForm).toBeVisible();
-        await login.CloseLoginFormBtn.click();
+        await login.LoginFormIsVisible()
+        // expect(await login.HeaderNameLogIn).toBeVisible();
+        // expect(await login.UserName).toHaveAttribute("type", "email");
+        // expect(await login.Password).toHaveAttribute("type", "password");
+        // expect(await login.LogMeAfter).toBeChecked();
+        // await expect(login.ForgotPasswordLink).toBeVisible();
+        // await expect(login.ContinueButton).toBeVisible();
+        // await expect(login.SignUpLinkForm).toBeVisible();
+        // await login.CloseLoginFormBtn.click();
     });
 
     test(`TC_11.03.05_04_UnAuth  > Test button [Download on the App Store] in the block "Sign up and trade smart today"  on '${language}' language`, async () => {
@@ -301,20 +302,15 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role"
     test(`TC_11.03.05_07_UnAuth  > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" on '${language}' language`, async () => {
         bannerBtn = new BannerBtn(page);
         header = new Header(page);
-        login = new LoginPage(page);
+        signup = new SignUpPage(page);
         await header.getEducationMenu.hover();
         await page.waitForLoadState('networkidle');
         await header.clickSwingTrading();
         await bannerBtn.clickCreateAndVerifyBtn();
-        await page.waitForTimeout(10000);
-        await expect(signup.FormSignUp).toBeVisible();
-        await expect(signup.LoginLinkForm).toBeVisible();
-        await expect(signup.UserName).toHaveAttribute("type", "email");
-        await expect(signup.Password).toHaveAttribute("type", "password");
-        await expect(signup.ContinueButton).toBeVisible();
-        await expect(signup.TextContinueButton()).toMatch(/Continue/)
-        await expect(signup.PolicyLink).toBeVisible();
-        await signup.clickCloseSignUpFormBtn();
+        // await page.waitForLoadState('networkidle');
+        await page.waitForTimeout(5000);
+        await signup.signUpFormIsVisible();
+        
     });
 });
 

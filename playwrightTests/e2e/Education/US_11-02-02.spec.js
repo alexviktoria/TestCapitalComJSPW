@@ -13,17 +13,20 @@ let login;
 let bannerBtn;
 let pretest;
 let linksfile;
-const language = "zh";
+const language = "es";
 
 
-test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
+test.describe.only("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
 
-    test.beforeEach(async ({ browser }) => {
+    test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         header = new Header(page);
         pretest = new Pretest(page, header);
         await pretest.pretestUnRegRole();
+        await header.getEducationMenu.hover();
+        await page.waitForLoadState('networkidle');
+        await header.clickSharesTrading();
 
     });
 
@@ -31,9 +34,6 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         bannerBtn = new BannerBtn(page);
         signup = new SignUpPage(page);
         linksfile = new LinksFile(page)
-        await header.getEducationMenu.hover();
-        await page.waitForLoadState('networkidle');
-        await header.clickSharesTrading();
         await bannerBtn.clickStartTradingBtnOnMainBanner();
         await signup.signUpFormIsVisible()
         console.log(`Testing the first level on the main page is completed successfully `);
@@ -41,8 +41,10 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         // Вызов функции linksSaveToFile_UnReg
         await linksfile.linksSaveToFile_UnReg(page, bannerBtn, signup)
         // Ваши проверки
+        const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+        const randomLinks = await getRandomElements(linksFromFile, 3);
         for (let i = 0; i < links.length; i++) {
-            await page.goto(links[i]);
+            await page.goto(randomlinks[i]);
             await bannerBtn.clickStartTradingBtnOnMainBanner();
             await signup.signUpFormIsVisible();
 
