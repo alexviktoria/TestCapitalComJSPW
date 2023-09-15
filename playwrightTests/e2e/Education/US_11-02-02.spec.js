@@ -13,7 +13,7 @@ let login;
 let bannerBtn;
 let pretest;
 let linksfile;
-const language = "es";
+const language = "ar";
 
 
 test.describe.only("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
