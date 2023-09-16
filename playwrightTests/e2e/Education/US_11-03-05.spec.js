@@ -178,8 +178,6 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on UnAuth Role"
         await page.goto("/");
         // user unauthorization
         await login.loginAndContinue(testData.email, testData.password);
-        // await login.ContinueButton.waitFor();
-        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
@@ -332,12 +330,9 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", 
         await page.goto("/");
         // user unauthorization
         await login.loginAndContinue(testData.email, testData.password);
-        // await login.ContinueButton.waitFor();
-        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
-        //  await login.logoutUser();
         // select country and language
         await header.hoverCountryAndLang();
         await header.clickDropdownCountry();

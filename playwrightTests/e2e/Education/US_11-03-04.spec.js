@@ -183,10 +183,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         // open capital.com
         await page.goto("/");
         // user unauthorization
-        // await login.clickBtnLogIn();
         await login.loginAndContinue(testData.email, testData.password);
-        // await login.ContinueButton.waitFor();
-        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
