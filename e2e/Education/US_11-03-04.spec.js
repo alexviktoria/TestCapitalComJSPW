@@ -1,11 +1,9 @@
 // @ts-nocheck
 const { test, expect } = require("@playwright/test");
-const { Header } = require("../../POM/header")
-const { LoginPage } = require("../../POM/login")
-const { SignUpPage } = require("../../POM/signup")
-const { BannerBtn } = require("../../POM/bannerButtons")
-// import { MyReporter } from "../../my-awesome-reporter";
-
+const { Header } = require("../../pages/header")
+const { LoginPage } = require("../../pages/login")
+const { SignUpPage } = require("../../pages/signup")
+const { BannerBtn } = require("../../pages/bannerButtons")
 
 let header;
 let page;
@@ -13,25 +11,18 @@ let bannerBtn;
 let signup;
 let login;
 
-// test.runWith({
-//     reporter: new MyReporter(),
-//   });
-
 const testData = {
     email: "alexviktoria1609@gmail.com",
     password: "Av-123456789",
 }
 
-const language = "العَرَبِيَّة"
-const country = "United Arab Emirates";
+const language = "en"
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
-    // test.use({ locale: 'en-GB' });
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         header = new Header(page);
-        // myreporter = new MyReporter();
         // open capital.com
         await page.goto("/");
         //accept all Cookies
@@ -164,18 +155,27 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
         await bannerBtn.clickCreateAndVerifyBtn();
         // await page.waitForLoadState('networkidle');
         await page.waitForTimeout(5000);
-        await expect(signup.FormSignUp).toBeVisible();
-        expect(await signup.LoginLinkForm).toBeVisible();
-        expect(await signup.UserName).toHaveAttribute("type", "email");
-        expect(await signup.Password).toHaveAttribute("type", "password");
-        expect(await signup.ContinueButton).toBeVisible();
-        expect(await signup.TextContinueButton()).toMatch(/Continue/)
-        expect(await signup.PolicyLink).toBeVisible();
-        await signup.clickCloseSignUpFormBtn();
+        await signup.signUpFormIsVisible();
+        // await expect(signup.FormSignUp).toBeVisible();
+        // expect(await signup.LoginLinkForm).toBeVisible();
+        // expect(await signup.UserName).toHaveAttribute("type", "email");
+        // expect(await signup.Password).toHaveAttribute("type", "password");
+        // expect(await signup.ContinueButton).toBeVisible();
+        // expect(await signup.TextContinueButton()).toMatch(/Continue/)
+        // expect(await signup.PolicyLink).toBeVisible();
+        // await signup.clickCloseSignUpFormBtn();
     });
 });
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Role", () => {
+    let header;
+    let login;
+    let page;
+    let bannerBtn;
+    const testData = {
+        email: "alexviktoria1609@gmail.com",
+        password: "Av-123456789",
+    }
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -184,10 +184,10 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         // open capital.com
         await page.goto("/");
         // user unauthorization
-        await login.clickBtnLogIn();
-        await login.validLogin(testData.email, testData.password);
+        // await login.clickBtnLogIn();
+        await login.loginAndContinue(testData.email, testData.password);
         // await login.ContinueButton.waitFor();
-        await login.ContinueButton.click();
+        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
@@ -209,15 +209,15 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         await page.waitForLoadState('networkidle');
         await header.clickPositionTrading()
         await bannerBtn.clickStartTradingBtnOnMainBanner();
-        await login.FormLoginBeVisible()
-        await expect(login.HeaderNameLogIn).toBeVisible();
-        expect(await login.UserName).toHaveAttribute("type", "email");
-        expect(await login.Password).toHaveAttribute("type", "password");
-        expect(await login.LogMeAfter).toBeChecked();
-        await expect(login.ForgotPasswordLink).toBeVisible();
-        await expect(login.ContinueButton).toBeVisible();
-        await expect(login.SignUpLinkForm).toBeVisible();
-        await login.CloseLoginFormBtn.click();
+        await login.LoginFormIsVisible();
+        // await expect(login.HeaderNameLogIn).toBeVisible();
+        // expect(await login.UserName).toHaveAttribute("type", "email");
+        // expect(await login.Password).toHaveAttribute("type", "password");
+        // expect(await login.LogMeAfter).toBeChecked();
+        // await expect(login.ForgotPasswordLink).toBeVisible();
+        // await expect(login.ContinueButton).toBeVisible();
+        // await expect(login.SignUpLinkForm).toBeVisible();
+        // await login.CloseLoginFormBtn.click();
     })
 
     test(`TC_11.03.04_02_UnAuth  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
@@ -228,15 +228,15 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         await page.waitForLoadState('networkidle');
         await header.clickPositionTrading()
         await bannerBtn.clickTryDemoBtnOnMainBanner();
-        await login.FormLoginBeVisible()
-        await expect(login.HeaderNameLogIn).toBeVisible();
-        expect(await login.UserName).toHaveAttribute("type", "email");
-        expect(await login.Password).toHaveAttribute("type", "password");
-        expect(await login.LogMeAfter).toBeChecked();
-        await expect(login.ForgotPasswordLink).toBeVisible();
-        await expect(login.ContinueButton).toBeVisible();
-        await expect(login.SignUpLinkForm).toBeVisible();
-        await login.CloseLoginFormBtn.click();
+        await login.LoginFormIsVisible();
+        // await expect(login.HeaderNameLogIn).toBeVisible();
+        // expect(await login.UserName).toHaveAttribute("type", "email");
+        // expect(await login.Password).toHaveAttribute("type", "password");
+        // expect(await login.LogMeAfter).toBeChecked();
+        // await expect(login.ForgotPasswordLink).toBeVisible();
+        // await expect(login.ContinueButton).toBeVisible();
+        // await expect(login.SignUpLinkForm).toBeVisible();
+        // await login.CloseLoginFormBtn.click();
     });
 
     test(`TC_11.03.04_03_UnAuth  > Test buttons [Trade] on Widget "Most traded" on '${language}' language`, async () => {
@@ -315,15 +315,16 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
         await page.waitForLoadState('networkidle');
         await header.clickPositionTrading();
         await bannerBtn.clickCreateAndVerifyBtn();
-        await page.waitForTimeout(10000);
-        await expect(signup.FormSignUp).toBeVisible();
-        await expect(signup.LoginLinkForm).toBeVisible();
-        await expect(signup.UserName).toHaveAttribute("type", "email");
-        await expect(signup.Password).toHaveAttribute("type", "password");
-        await expect(signup.ContinueButton).toBeVisible();
-        await expect(signup.TextContinueButton()).toMatch(/Continue/)
-        await expect(signup.PolicyLink).toBeVisible();
-        await signup.clickCloseSignUpFormBtn();
+        await page.waitForTimeout(5000);
+        await signup.signUpFormIsVisible();
+        // await expect(signup.FormSignUp).toBeVisible();
+        // await expect(signup.LoginLinkForm).toBeVisible();
+        // await expect(signup.UserName).toHaveAttribute("type", "email");
+        // await expect(signup.Password).toHaveAttribute("type", "password");
+        // await expect(signup.ContinueButton).toBeVisible();
+        // await expect(signup.TextContinueButton()).toMatch(/Continue/)
+        // await expect(signup.PolicyLink).toBeVisible();
+        // await signup.clickCloseSignUpFormBtn();
     });
 });
 
@@ -345,12 +346,11 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role
         await page.goto("/");
         // user unauthorization
         await login.loginAndContinue(testData.email, testData.password);
-        await login.ContinueButton.waitFor();
-        await login.ContinueButton.click();
+        // await login.ContinueButton.waitFor();
+        // await login.ContinueButton.click();
         await page.waitForLoadState('networkidle');
         await page.goBack();
         await page.waitForLoadState('networkidle');
-        //  await login.logoutUser();
         // select country and language
         await header.hoverCountryAndLang();
         await header.clickDropdownCountry();
