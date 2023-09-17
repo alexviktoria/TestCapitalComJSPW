@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test --headed",
+    "test:my": "npx playwright test /e2e/education/test.spec.js --workers 1 --headed",
+    "test:11-03-04": "npx playwright test /e2e/education/US_11-03-04.spec.js --workers 1 --debug",
+    "test:11-02-02": "npx playwright test /e2e/education/US_11-02-02.spec.js --workers 1 --debug",
+    "test:report": "npx playwright test --reporter=list,allure-playwright --workers 1",
+    "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
+    "allure:clear": "rm -r allure-results/ allure-report || true",
+    "APITests" : "npx playwright test --grep @API"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexviktoria/TestCapitalComJSPW.git"
@@ -17,6 +26,7 @@
   "homepage": "https://github.com/alexviktoria/TestCapitalComJSPW#readme",
   "devDependencies": {
     "@playwright/test": "^1.38.0",
-    "@types/node": "^20.6.2"
+    "@types/node": "^20.6.2",
+    "allure-playwright": "^2.8.1"
   }
 }
