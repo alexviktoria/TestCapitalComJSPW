@@ -1,0 +1,22 @@
+{
+  "name": "testcapitalcom_js_pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexviktoria/TestCapitalComJSPW.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexviktoria/TestCapitalComJSPW/issues"
+  },
+  "homepage": "https://github.com/alexviktoria/TestCapitalComJSPW#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.38.0",
+    "@types/node": "^20.6.2"
+  }
+}
