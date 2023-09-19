@@ -1,8 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 const language = "English"
-const country = "United Kingdom";
-
+const country = "United Kingdom"
 exports.Header = class Header {
     constructor(page) {
         this.page = page;
@@ -48,12 +47,18 @@ exports.Header = class Header {
     }
 
     async clickPositionTrading() {
-        if (await this.PositionTrading.isVisible()) {
-            await this.PositionTrading.click();
-        } else {
-            console.log(`For test on '${language}' language the page "Education->Position Trading" doesn't exist on production`);
-            test.skip();
-        }
+        await test.step("Hover Education Menu", async () => {
+            await this.getEducationMenu.hover()
+            // await this.page.waitForLoadState('networkidle');
+        });
+        await test.step("Click Position Trading", async () => {
+            if (await this.PositionTrading.isVisible()) {
+                await this.PositionTrading.click();
+            } else {
+                console.log(`For test on '${language}' language the page "Education->Position Trading" doesn't exist on production`);
+                test.skip();
+            }
+        });
     }
 
     async clickSwingTrading() {
