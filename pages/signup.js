@@ -1,4 +1,5 @@
-const { expect } = require("@playwright/test");
+const { test, expect } = require("@playwright/test");
+
 class SignUpPage {
   constructor(page) {
     this.page = page;
@@ -48,13 +49,32 @@ class SignUpPage {
   }
 
   async signUpFormIsVisible() {
-    await expect(this.FormSignUp).toBeVisible();
-    await expect(this.LoginLinkForm).toBeVisible();
-    await expect(this.UserName).toHaveAttribute("type", "email");
-    await expect(this.Password).toHaveAttribute("type", "password");
-    await expect(this.ContinueButton).toBeVisible();
-    await expect(this.PolicyLink).toBeVisible();
-    await this.CloseSignUpFormBtn.click();
+    await test.step("Sign Up Form is visible", async () => {
+      await expect(this.FormSignUp).toBeVisible();
+      await expect(this.LoginLinkForm).toBeVisible();
+      await expect(this.UserName).toHaveAttribute("type", "email");
+      await expect(this.Password).toHaveAttribute("type", "password");
+      await expect(this.ContinueButton).toBeVisible();
+      await expect(this.PolicyLink).toBeVisible();
+    });
+    await test.step("Sign Up Form is closed", async () => {
+      await this.CloseSignUpFormBtn.click();
+    });
+  }
+
+  async signUpFormOnPlatformIsVisible() {
+    await test.step("Sign Up Form On Platform is visible", async () => {
+      await expect(this.FormSignUpOnPaltform).toBeVisible();
+      await expect(this.LoginLinkFormOnPlatform).toBeVisible();
+      await expect(this.EmailOnPlatform).toHaveAttribute("type", "email");
+      await expect(this.PasswordOnPlatform).toHaveAttribute("type", "password");
+      await expect(this.ContinueButtonOnPlatform).toBeVisible();
+      await expect(this.ContinueButtonOnPlatform).toHaveText(/Continue/);
+      await this.page.waitForLoadState('networkidle');
+    });
+    await test.step("Go back to the previous page", async () => {
+      await this.page.goBack();
+    });
   }
 
 }
