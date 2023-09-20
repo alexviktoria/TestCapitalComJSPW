@@ -24,7 +24,7 @@ module.exports = defineConfig({
   reporter: [['line'],
   ["allure-playwright",
     {
-      detail: true,
+      detail: false,
       outputFolder: "allure-results",
       suiteTitle: true,
     },

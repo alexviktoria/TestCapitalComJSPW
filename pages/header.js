@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
-const language = "English"
-const country = "United Kingdom"
+const language = "Español"
+const country = "Spain"
 exports.Header = class Header {
     constructor(page) {
         this.page = page;
@@ -15,6 +15,10 @@ exports.Header = class Header {
         this.AcceptAllCookies = page.locator('#onetrust-accept-btn-handler')
         this.GetCountry = page.getByRole("link", { name: country })
         this.GetLanguage = page.getByRole("link", { name: language })
+        // Platform
+        this.LogoCapitalOnPlatform = page.locator('a.logo')
+        this.AccountModeLive = page.locator('div.account__mode_live')
+        this.AccountModeDemo = page.locator('div.account__mode_demo')
         // Countries
         this.GermanyCountry = page.locator('li.js-analyticsClick[data-type="nav_country_germany"]')
         this.TurkeyCountry = page.locator('li.js-analyticsClick[data-type="nav_country_turkey"]')
@@ -49,7 +53,7 @@ exports.Header = class Header {
     async clickPositionTrading() {
         await test.step("Hover Education Menu", async () => {
             await this.getEducationMenu.hover()
-            // await this.page.waitForLoadState('networkidle');
+            await this.page.waitForLoadState('networkidle');
         });
         await test.step("Click Position Trading", async () => {
             if (await this.PositionTrading.isVisible()) {
@@ -62,12 +66,18 @@ exports.Header = class Header {
     }
 
     async clickSwingTrading() {
+        await test.step("Hover Education Menu", async () => {
+            await this.getEducationMenu.hover()
+            await this.page.waitForLoadState('networkidle');
+        });
+        await test.step("Click Position Trading", async () => {
         if (await this.SwingTrading.isVisible()) {
             await this.SwingTrading.click();
         } else {
             console.log(`For test on '${language}' language the page "Education->Swing Trading" doesn't exist on production`);
             test.skip();
         }
+    });
     }
 
     async clickSharesTrading() {
@@ -88,6 +98,40 @@ exports.Header = class Header {
 
     async clickGetLanguage() {
         await this.GetLanguage.click();
+    }
+
+    async pagePlatformLiveIsVisible() {
+        await test.step("Page Platform 'Live' is visible", async () => {
+            await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
+            await expect(this.LogoCapitalOnPlatform).toBeVisible();
+            await expect(this.AccountModeLive).toBeVisible();
+        });
+
+        await test.step("Go back to the previous page", async () => {
+            await this.page.goBack();
+        });
+    }
+    async pagePlatformDemoIsVisible() {
+        await test.step("Page Platform 'Demo' is visible", async () => {
+            await expect(this.page).toHaveURL('https://capital.com/trading/platform/?mode=demo');
+            await expect(this.LogoCapitalOnPlatform).toBeVisible();
+            await expect(this.AccountModeDemo).toBeVisible();
+        });
+
+        await test.step("Go back to the previous page", async () => {
+            await this.page.goBack();
+        });
+    }
+
+    async pagePlatformInstrumentIsVisible() {
+        await test.step("Page Platform  'Instrument' is visible", async () => {
+            await expect(this.page).toHaveURL('https://capital.com/trading/platform/charting/');
+            await expect(this.LogoCapitalOnPlatform).toBeVisible();
+        });
+
+        await test.step("Go back to the previous page", async () => {
+            await this.page.goBack();
+        });
     }
 
 }

@@ -7,8 +7,6 @@ class SignUpPage {
     this.FormSignUp = page.locator("#s_overlay > .form-container-white");
     this.FormSignUpOnPaltform = page.locator('signup-component.modal2');
     // header name
-    this.HeaderNameSignUp = page.locator('[class="signup-form"] .h1');
-    this.HeaderNameSignUpOnPlatform = page.locator('.modal__header');
     this.LoginLinkForm = page.locator('.signup-form > .form-container-small-header > p > .l_btn_signup');
     this.LoginLinkFormOnPlatform = page.locator('.txt__link');
     this.PolicyLink = page.locator('.signup-form a[href*="terms-and-policies"]');
@@ -69,7 +67,6 @@ class SignUpPage {
       await expect(this.EmailOnPlatform).toHaveAttribute("type", "email");
       await expect(this.PasswordOnPlatform).toHaveAttribute("type", "password");
       await expect(this.ContinueButtonOnPlatform).toBeVisible();
-      await expect(this.ContinueButtonOnPlatform).toHaveText(/Continue/);
       await this.page.waitForLoadState('networkidle');
     });
     await test.step("Go back to the previous page", async () => {

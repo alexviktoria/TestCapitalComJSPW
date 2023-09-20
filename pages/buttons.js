@@ -1,10 +1,9 @@
 const { test, expect } = require("@playwright/test");
 
 class AllButtons {
-    constructor(page, header, signup) {
+    constructor(page, header) {
         this.page = page;
         this.header = header;
-        this.signup = signup;
         this.StartTradingBtnOnMainBanner = page.locator('a.btn--darkText[data-type="top_banner_btn"]')
         this.TryDemoBtnOnMainBanner = page.locator('.btn--emptyblack')
         this.TradeBtnOnWidgetMostTraded = page.locator('.mostTraded__btn')
@@ -64,7 +63,7 @@ class AllButtons {
             await expect(this.LinkCapitalComOnAppstore).toBeVisible();
         })
         await test.step("Go back to the previous page", async () => {
-            await this.page.waitForTimeout(1000);
+            // await this.page.waitForTimeout(1000);
             await this.page.goBack();
         })
     }
