@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
-const language = "Español"
-const country = "Spain"
+const language = "Deutsch"
+const country = "Germany"
 exports.Header = class Header {
     constructor(page) {
         this.page = page;
@@ -53,7 +53,7 @@ exports.Header = class Header {
     async clickPositionTrading() {
         await test.step("Hover Education Menu", async () => {
             await this.getEducationMenu.hover()
-            await this.page.waitForLoadState('networkidle');
+            // await this.page.waitForLoadState('networkidle');
         });
         await test.step("Click Position Trading", async () => {
             if (await this.PositionTrading.isVisible()) {
