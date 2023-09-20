@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
-const language = "Deutsch"
-const country = "Germany"
+const language = "Español"
+const country = "Spain"
 exports.Header = class Header {
     constructor(page) {
         this.page = page;
