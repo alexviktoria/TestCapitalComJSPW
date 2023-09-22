@@ -13,14 +13,14 @@ let signup;
 let login;
 let pretest
 
-const language = "es"
+const language = "en"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
     test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext("Hidden");
         page = await context.newPage("Hidden");
         header = new Header(page);
-        pretest = new Pretest(page, header, login);
+        pretest = new Pretest(page, header, login);git
         await test.step("Pretest for UnReg Role", async () => {
             await pretest.pretest_UnReg_Role();
         });
