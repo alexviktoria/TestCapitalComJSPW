@@ -45,7 +45,7 @@ class Pretest {
             await this.login.clickBtnLogIn();
             await test.step("Filling out the login form", async () => {
                 await this.login.loginAndContinue(testData.email, testData.password);
-                await this.page.waitForLoadState('networkidle');
+                await this.page.waitForNavigation();
                 await this.page.goBack();
                 await this.page.waitForLoadState('networkidle');
             });
@@ -77,7 +77,7 @@ class Pretest {
         });
         await test.step("Filling out the login form", async () => {
             await this.login.loginAndContinue(testData.email, testData.password);
-            await this.page.waitForLoadState('networkidle');
+            await this.page.waitForNavigation();
             await this.page.goBack();
             await this.page.waitForLoadState('networkidle');
         });

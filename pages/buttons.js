@@ -53,8 +53,8 @@ class AllButtons {
     async clickDownloadOnAppStoreBtn() {
         await test.step("Click [Download on the App Store] button in the block 'Sign up and trade smart today'", async () => {
             await this.DownloadOnAppStore.click();
-            // await this.page.waitForNavigation();
-            await this.page.waitForTimeout(1000);
+            await this.page.waitForNavigation();
+            // await this.page.waitForTimeout(1000);
         });
         await test.step("Page of App Store is opened", async () => {
             await expect(this.LogoAppStore).toBeVisible();
@@ -71,7 +71,7 @@ class AllButtons {
     async clickDownloadOnGooglePlayBtn() {
         await test.step("Click [Download on the Google Play] button in the block 'Sign up and trade smart today'", async () => {
             await this.DownloadOnGooglePlay.click();
-            // await this.page.waitForNavigation(); // ожидание загрузки новой страницы
+            await this.page.waitForNavigation(); // ожидание загрузки новой страницы
             const currentUrl = await this.page.url();
             if (currentUrl === 'https://apps.apple.com/IE/app/id1230088754?mt=8') {
                 console.log('The link to App Store instead of Google Play');
