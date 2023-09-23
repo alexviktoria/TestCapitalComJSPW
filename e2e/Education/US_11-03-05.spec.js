@@ -13,7 +13,7 @@ let signup;
 let login;
 let pretest
 
-const language = "en"
+const language = "ar"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -206,7 +206,7 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", 
         header = new Header(page);
         header = new Header(page);
         await header.clickSwingTrading();
-        await buttons.clickExploreWebPlatformBtn();
+        await buttons.clickTradeBtnOnWidgetMostTraded();
         await header.pagePlatformInstrumentIsVisible();
        
     });
