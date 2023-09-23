@@ -125,7 +125,7 @@ exports.Header = class Header {
 
     async pagePlatformInstrumentIsVisible() {
         await test.step("Page Platform  'Instrument' is visible", async () => {
-            await expect(this.page).toHaveURL('https://capital.com/trading/platform/charting/');
+            await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
             await expect(this.LogoCapitalOnPlatform).toBeVisible();
         });
 
