@@ -13,7 +13,7 @@ let signup;
 let login;
 let pretest
 
-const language = "ar"
+const language = "ro"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
