@@ -1,4 +1,4 @@
-const { expect } = require("@playwright/test");
+const { test, expect } = require("@playwright/test");
 class LoginPage {
   constructor(page) {
     this.page = page;
@@ -21,7 +21,7 @@ class LoginPage {
     this.EmailOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(3)');
     this.PasswordOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(5)');
     this.ForgotPasswordLinkOnPlatform = page.locator('.txt.txt_link');
-    this.BtnContinueOnPlatform = page.locator('.button-main')
+    this.ContinueBtnOnPlatform = page.locator('.button-main')
     this.LogoCapitalOnPlatform = page.locator('a.logo')
   }
 
@@ -40,7 +40,7 @@ class LoginPage {
   }
 
   async loginAndContinue(email, password) {
-    await this.clickBtnLogIn();
+    // await this.clickBtnLogIn();
     await this.validLogin(email, password);
     await this.LogMeAfter.click();
     // await this.ContinueButton.waitFor();
@@ -54,30 +54,44 @@ class LoginPage {
   }
 
   async LoginFormIsVisible() {
-    try {
-      await expect(this.FormLogIn).toBeVisible();
-      await expect(this.HeaderNameLogIn).toBeVisible();
-      await expect(this.UserName).toHaveAttribute("type", "email");
-      await expect(this.Password).toHaveAttribute("type", "password");
-      await expect(this.LogMeAfter).toBeChecked();
-      await expect(this.ForgotPasswordLink).toBeVisible();
-      await expect(this.ContinueButton).toBeVisible();
-      await expect(this.SignUpLinkForm).toBeVisible();
-      await this.CloseLoginFormBtn.click();
-    } catch (error) {
-      console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
-      throw new Error();
-    }
+    await test.step("Login Form is visible", async () => {
+      try {
+        await expect(this.FormLogIn).toBeVisible();
+        await expect(this.HeaderNameLogIn).toBeVisible();
+        await expect(this.UserName).toHaveAttribute("type", "email");
+        await expect(this.Password).toHaveAttribute("type", "password");
+        await expect(this.LogMeAfter).toBeChecked();
+        await expect(this.ForgotPasswordLink).toBeVisible();
+        await expect(this.ContinueButton).toBeVisible();
+        await expect(this.SignUpLinkForm).toBeVisible();
+        await this.CloseLoginFormBtn.click();
+      } catch (error) {
+        console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+        throw new Error();
+      }
+    });
 
   }
 
-  async FormLoginOnPlatformBeVisible() {
-    try {
-      await this.expect(FormLoginOnPlatform).isVisible();
-    } catch (error) {
-      console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
-      throw new Error();
-    }
+  async LoginFormOnPlatformIsVisible() {
+    await test.step("Login Form on platform is visible", async () => {
+      try {
+        await expect(this.FormLoginOnPlatform).toBeVisible();
+        await expect(this.HeaderNameLoginOnPlatform).toBeVisible();
+        await expect(this.SignUpLinkFormOnPlatform).toBeVisible();
+        await expect(this.EmailOnPlatform).toHaveAttribute("type", "email");
+        await expect(this.PasswordOnPlatform).toHaveAttribute("type", "password");
+        await expect(this.ContinueBtnOnPlatform).toBeVisible();
+      } catch (error) {
+        console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+        throw new Error();
+      }
+    });
+    
+    await test.step("Go back to the previous page", async () => {
+      await this.page.goBack();
+    });
+
   }
 
 }
