@@ -26,7 +26,7 @@ module.exports = defineConfig({
     {
       detail: false,
       outputFolder: "allure-results",
-      suiteTitle: true,
+      suiteTitle: false,
     },
   ],
   ],
