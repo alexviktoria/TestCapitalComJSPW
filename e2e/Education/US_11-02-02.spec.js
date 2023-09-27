@@ -106,7 +106,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
     });
 });
 
-test.describe.only("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role", () => {
+test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role", () => {
 
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
