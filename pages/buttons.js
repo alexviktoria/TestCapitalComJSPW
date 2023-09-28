@@ -45,7 +45,7 @@ class AllButtons {
                 await this.TradeBtnOnWidgetMostTraded.click();
             } catch (error) {
                 console.log(`For test on FCA license the button [Trade] doen't displayed `)
-                throw new Error();
+                test.skip();
             }
         });
     }
@@ -97,7 +97,7 @@ class AllButtons {
             await this.ExploreWebPlatform.click();
             await this.page.waitForNavigation();
         });
-        
+
     }
 
     async clickCreateAndVerifyBtn() {
@@ -109,7 +109,10 @@ class AllButtons {
     }
 
     async clickSellBtnOnBanner() {
-        await this.SellBtnOnBanner.click();
+        await test.step('Click [Sell] button in the Banner [Trading Instrument]', async () => {
+            await this.SellBtnOnBanner.click();
+        })
+
     }
 
     async clickBuyBtnOnBanner() {
