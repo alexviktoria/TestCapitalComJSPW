@@ -1,0 +1,1 @@
+BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role
