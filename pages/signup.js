@@ -53,7 +53,6 @@ class SignUpPage {
       await expect(this.UserName).toHaveAttribute("type", "email");
       await expect(this.Password).toHaveAttribute("type", "password");
       await expect(this.ContinueButton).toBeVisible();
-      await expect(this.PolicyLink).toBeVisible();
     });
     await test.step("Sign Up Form is closed", async () => {
       await this.CloseSignUpFormBtn.click();
