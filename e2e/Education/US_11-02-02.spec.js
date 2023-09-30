@@ -46,9 +46,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await test.step("Checking for links in sidebar items", async () => {
             // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
-                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -83,9 +82,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         // await page.waitForTimeout(10000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
-                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -109,7 +107,6 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         })
     });
 
-
     test(`TC_11.02.02_03_UnReg  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
         buttons = new AllButtons(page);
         signup = new SignUpPage(page);
@@ -121,7 +118,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         // await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
                 test.skip();
             } else {
@@ -164,7 +161,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         // await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
                 test.skip();
             } else {
@@ -220,9 +217,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await test.step("Checking for links in sidebar items", async () => {
             // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
-                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -256,9 +252,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         // await page.waitForTimeout(10000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
-                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -293,7 +288,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         // await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
                 test.skip();
             } else {
@@ -343,7 +338,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         // await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
                 test.skip();
             } else {
@@ -407,9 +402,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         await test.step("Checking for links in sidebar items", async () => {
             // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
-                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -445,9 +439,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         await test.step("Checking for links in sidebar items", async () => {
             // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
-                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -482,7 +475,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
                 test.skip();
             } else {
@@ -525,7 +518,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
-            if (links.length === 0 || language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
+            if (links.length === 0 && language === "ar", "el", "fr", "hu", "nl","pl", "ro", "ru", "zh" ) {
                 console.log("There are no links on this page and testing of the second level is impossible");
                 test.skip();
             } else {
