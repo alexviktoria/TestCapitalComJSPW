@@ -116,7 +116,9 @@ class AllButtons {
     }
 
     async clickBuyBtnOnBanner() {
-        await this.BuyBtnOnBanner.click();
+        await test.step('Click [Buy] button in the Banner [Trading Instrument]', async () => {
+            await this.BuyBtnOnBanner.click();
+        })
     }
 }
 module.exports = { AllButtons };

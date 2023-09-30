@@ -10,7 +10,7 @@
     "test:11-02-02": "npx playwright test /e2e/education/US_11-02-02.spec.js --workers 1",
     "test:report": "npx playwright test --reporter=list,allure-playwright --workers 1",
     "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
-    "allure:clear": "rm -r allure-results/ allure-report/ test-results/ playwright-report || true",
+    "allure:clear": "rm -r allure-results/ allure-report/ test-results/ playwright-report /links.txt || true",
     "APITests" : "npx playwright test --grep @API"
   },
   "repository": {
