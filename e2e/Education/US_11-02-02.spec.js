@@ -12,8 +12,8 @@ let buttons;
 let signup;
 let login;
 let pretest;
-const language = "en";
-const country = "United Kingdom"
+const language = "ar";
+const country = "United Arab Emirates"
 
 function getRandomElements(array, count) {
     const randomized = array.slice();
@@ -107,7 +107,6 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         })
     });
 
-
     test(`TC_11.02.02_03_UnReg  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
         buttons = new AllButtons(page);
         signup = new SignUpPage(page);
@@ -121,6 +120,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -149,10 +149,51 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             };
         });
     });
+
+    test(`TC_11.02.02_04_UnReg  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+        buttons = new AllButtons(page);
+        signup = new SignUpPage(page);
+        const fs = require('fs');
+        if (country === "United Kingdom") {
+            console.log("Testing is not available on the FCA license");
+            test.skip();
+        }
+        // await page.waitForTimeout(15000);
+        await test.step("Checking for links in sidebar items", async () => {
+            const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+            if (links.length === 0) {
+                console.log("There are no links on this page and testing of the second level is impossible");
+            } else {
+                console.log("links", links);
+            }
+            // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
+            fs.writeFileSync('links.txt', links.join('\n'));
+            const fileContent = fs.readFileSync('links.txt', 'utf-8');
+            const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
+            const randomLinks = await getRandomElements(linksFromFile, 3);
+            for (let i = 0; i < randomLinks.length; i++) {
+                await test.step('Accidental redirection to the page from the sidebar', async () => {
+                    await page.goto(randomLinks[i]);
+                    if (await buttons.BuyBtnOnBanner.isVisible()) {
+                        await buttons.clickBuyBtnOnBanner();
+                        await signup.signUpFormIsVisible();
+                    } else {
+                        console.log(`For test on '${randomLinks[i]}' link the button [Buy] doen't displayed`);
+                        return;
+                    }
+
+                    if (randomLinks.includes(randomLinks[i])) {
+                        console.log(`Testing on the '${randomLinks[i]}' link was successfully completed `);
+                    } else {
+                        console.log(`Testing on the '${randomLinks[i]}' link was failed`);
+                    }
+                });
+            };
+        });
+    });
 });
 
 test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role", () => {
-
     test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -282,10 +323,58 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             };
         });
     })
+
+    test(`TC_11.02.02_04_UnAuth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+        buttons = new AllButtons(page);
+        signup = new SignUpPage(page);
+        const fs = require('fs');
+        if (country === "United Kingdom") {
+            console.log("Testing is not available on the FCA license");
+            test.skip();
+        }
+        // await page.waitForTimeout(15000);
+        await test.step("Checking for links in sidebar items", async () => {
+            const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+            if (links.length === 0) {
+                console.log("There are no links on this page and testing of the second level is impossible");
+            } else {
+                console.log("links", links);
+            }
+            // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
+            fs.writeFileSync('links.txt', links.join('\n'));
+            const fileContent = fs.readFileSync('links.txt', 'utf-8');
+            const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
+            const randomLinks = await getRandomElements(linksFromFile, 3);
+            for (let i = 0; i < randomLinks.length; i++) {
+                await test.step('Accidental redirection to the page from the sidebar', async () => {
+                    await page.goto(randomLinks[i]);
+                    if (await buttons.BuyBtnOnBanner.isVisible()) {
+                        await buttons.clickBuyBtnOnBanner();
+                        await signup.signUpFormIsVisible();
+                    } else {
+                        console.log(`For test on '${randomLinks[i]}' link the button [Buy] doen't displayed`);
+                        return;
+                    }
+
+                    try {
+                        await expect(page.locator("#l_overlay > .form-container-white")).toBeVisible();
+                    } catch (error) {
+                        console.log("Opened a 'Sign up' form instead of a 'Login' form");
+                        throw new Error();
+                    }
+
+                    if (randomLinks.includes(randomLinks[i])) {
+                        console.log(`Testing on the '${randomLinks[i]}' link was successfully completed `);
+                    } else {
+                        console.log(`Testing on the '${randomLinks[i]}' link was failed`);
+                    }
+                });
+            };
+        });
+    })
 });
 
 test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role", () => {
-
     test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -398,6 +487,48 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
                         await header.pagePlatformLiveIsVisible();
                     } else {
                         console.log(`For test on '${randomLinks[i]}' link the button [Sell] doen't displayed`);
+                        return;
+                    }
+
+                    if (randomLinks.includes(randomLinks[i])) {
+                        console.log(`Testing on the '${randomLinks[i]}' link was successfully completed `);
+                    } else {
+                        console.log(`Testing on the '${randomLinks[i]}' link was failed`);
+                    }
+                });
+            };
+        });
+    })
+
+    test(`TC_11.02.02_04_Auth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+        buttons = new AllButtons(page);
+        login = new LoginPage(page);
+        header = new Header(page);
+        const fs = require('fs');
+        if (country === "United Kingdom") {
+            console.log("Testing is not available on the FCA license");
+            test.skip();
+        }
+        // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
+        await test.step("Checking for links in sidebar items", async () => {
+            const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+            if (links.length === 0) {
+                console.log("There are no links on this page and testing of the second level is impossible");
+            } else {
+                console.log("links", links);
+            }
+            fs.writeFileSync('links.txt', links.join('\n'));
+            const fileContent = fs.readFileSync('links.txt', 'utf-8');
+            const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
+            const randomLinks = await getRandomElements(linksFromFile, 3);
+            for (let i = 0; i < randomLinks.length; i++) {
+                await test.step('Accidental redirection to the page from the sidebar', async () => {
+                    await page.goto(randomLinks[i]);
+                    if (await buttons.SellBtnOnBanner.isVisible()) {
+                        await buttons.clickBuyBtnOnBanner();
+                        await header.pagePlatformLiveIsVisible();
+                    } else {
+                        console.log(`For test on '${randomLinks[i]}' link the button [Buy] doen't displayed`);
                         return;
                     }
 
