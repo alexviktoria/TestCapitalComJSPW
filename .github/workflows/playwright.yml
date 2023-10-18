@@ -1,9 +1,10 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
 jobs:
   test:
     timeout-minutes: 60
@@ -25,7 +26,7 @@ jobs:
         with:
           name: allure-results
           path: allure-results
-          retention-days: 30
+          retention-days: 7
         
       - name: Get Allure history
         uses: actions/checkout@v3
@@ -44,7 +45,7 @@ jobs:
           gh_pages: gh-pages
           allure_report: allure-report
           allure_history: allure-history
-          keep_reports: 30
+          keep_reports: 14
 
       - name: Deploy allure report to Github Pages
         if: always()

@@ -12,9 +12,8 @@ let buttons;
 let signup;
 let login;
 let pretest;
-const language = "de";
-const country = "Germany"
-
+const language = "fr";
+const country = "France"
 function getRandomElements(array, count) {
     const randomized = array.slice();
     for (let i = randomized.length - 1; i > 1; i--) {
@@ -44,7 +43,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            // await page.waitForTimeout(10000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -79,7 +78,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await buttons.clickTryDemoBtnOnMainBanner();
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
-        // await page.waitForTimeout(10000);
+        await page.waitForTimeout(10000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
@@ -115,7 +114,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        // await page.waitForTimeout(15000);
+        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
@@ -212,7 +211,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await login.LoginFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            // await page.waitForTimeout(10000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -246,7 +245,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await buttons.clickTryDemoBtnOnMainBanner();
         await login.LoginFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
-        // await page.waitForTimeout(10000);
+        await page.waitForTimeout(10000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
@@ -282,7 +281,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        // await page.waitForTimeout(15000);
+        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
@@ -331,7 +330,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        // await page.waitForTimeout(15000);
+        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
@@ -394,7 +393,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         await header.pagePlatformLiveIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            // await page.waitForTimeout(10000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -431,7 +430,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         await header.pagePlatformDemoIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            // await page.waitForTimeout(10000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
