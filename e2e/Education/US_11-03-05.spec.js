@@ -13,10 +13,10 @@ let signup;
 let login;
 let pretest
 
-const language = "es"
+const language = "de"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
-    test.beforeEach(async ({ browser }) => {
+    test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page, header, login);
@@ -94,7 +94,7 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role"
 
 test.describe("US_11-05-04_Education > Menu item [Swing Trading] on UnAuth Role", () => {
     
-    test.beforeEach(async ({ browser }) => {
+    test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page, header,login);
@@ -170,16 +170,16 @@ test.describe("US_11-05-04_Education > Menu item [Swing Trading] on UnAuth Role"
     });
 });
 
-test.describe("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", () => {
+test.describe.only("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", () => {
     
-    test.beforeEach(async ({ browser }) => {
+    test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page);
         await test.step("Pretest for Auth Role", async () => {
             await pretest.pretest_Auth_Role();
-        }); 
-
+        });
+       
     });
 
     test(`TC_11.03.05_01_Auth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
