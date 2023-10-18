@@ -13,7 +13,7 @@ let signup;
 let login;
 let pretest
 
-const language = "de"
+const language = "fr"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
     test.beforeAll(async ({ browser }) => {
@@ -170,7 +170,7 @@ test.describe("US_11-05-04_Education > Menu item [Swing Trading] on UnAuth Role"
     });
 });
 
-test.describe.only("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", () => {
+test.describe("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", () => {
     
     test.beforeAll(async ({ browser }) => {
         const context = await browser.newContext();
