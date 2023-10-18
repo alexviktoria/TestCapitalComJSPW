@@ -1,1 +1,0 @@
-For test on 'Română' language the page "Education->Position Trading" doesn't exist on production

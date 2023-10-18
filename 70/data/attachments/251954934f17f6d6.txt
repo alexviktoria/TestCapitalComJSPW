@@ -1,0 +1,16 @@
+links [
+  'https://capital.com/',
+  'https://capital.com/fr/trading-advanced-micro-device',
+  'https://capital.com/fr/trading-amazon',
+  'https://capital.com/fr/trading-apple',
+  'https://capital.com/fr/trading-aurora-cannabis',
+  'https://capital.com/fr/trading-canopy-growth',
+  'https://capital.com/fr/trading-facebook',
+  'https://capital.com/fr/trading-google',
+  'https://capital.com/fr/trading-netflix',
+  'https://capital.com/fr/trading-tesla',
+  'https://capital.com/fr/trading-twitter'
+]
+Testing on the 'https://capital.com/fr/trading-google' link was successfully completed 
+Testing on the 'https://capital.com/fr/trading-facebook' link was successfully completed 
+Testing on the 'https://capital.com/fr/trading-aurora-cannabis' link was successfully completed 
