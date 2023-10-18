@@ -12,8 +12,8 @@ let buttons;
 let signup;
 let login;
 let pretest;
-const language = "es";
-const country = "Spain"
+const language = "de";
+const country = "Germany"
 
 function getRandomElements(array, count) {
     const randomized = array.slice();
