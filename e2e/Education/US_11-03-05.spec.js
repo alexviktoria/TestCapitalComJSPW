@@ -13,10 +13,10 @@ let signup;
 let login;
 let pretest
 
-const language = "ar"
+const language = "en"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role", () => {
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page, header, login);
@@ -94,7 +94,7 @@ test.describe("US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role"
 
 test.describe("US_11-05-04_Education > Menu item [Swing Trading] on UnAuth Role", () => {
     
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page, header,login);
@@ -172,7 +172,7 @@ test.describe("US_11-05-04_Education > Menu item [Swing Trading] on UnAuth Role"
 
 test.describe("US_11-03-05_Education > Menu item [Swing Trading] on Auth Role", () => {
     
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page);
