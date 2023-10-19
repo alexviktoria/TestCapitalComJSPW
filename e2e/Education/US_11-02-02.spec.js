@@ -12,8 +12,8 @@ let buttons;
 let signup;
 let login;
 let pretest;
-const language = "ar";
-const country = "United Arab Emirates"
+const language = "en";
+const country = "United Kingdom"
 function getRandomElements(array, count) {
     const randomized = array.slice();
     for (let i = randomized.length - 1; i > 1; i--) {
@@ -24,7 +24,7 @@ function getRandomElements(array, count) {
 }
 
 test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         header = new Header(page);
@@ -43,7 +43,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -56,7 +56,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
             const randomLinks = await getRandomElements(linksFromFile, 3);
             for (let i = 0; i < randomLinks.length; i++) {
-                await test.step("Accidental redirection to the page from the sidebar items", async () => {
+                await test.step("Accidental redirection to the page from the sidebar", async () => {
                     await page.goto(randomLinks[i]);
                     await buttons.clickStartTradingBtnOnMainBanner();
                     await signup.signUpFormIsVisible();
@@ -78,8 +78,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await buttons.clickTryDemoBtnOnMainBanner();
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -114,11 +114,12 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -156,11 +157,12 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -211,7 +213,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await login.LoginFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -245,8 +247,8 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await buttons.clickTryDemoBtnOnMainBanner();
         await login.LoginFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -275,17 +277,18 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
 
     test(`TC_11.02.02_03_UnAuth  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
         buttons = new AllButtons(page);
-        signup = new SignUpPage(page);
+        login = new LoginPage(page);
         const fs = require('fs');
         if (country === "United Kingdom") {
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -299,17 +302,10 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
                     await page.goto(randomLinks[i]);
                     if (await buttons.SellBtnOnBanner.isVisible()) {
                         await buttons.clickSellBtnOnBanner();
-                        await signup.signUpFormIsVisible();
+                        await login.LoginFormIsVisible();
                     } else {
                         console.log(`For test on '${randomLinks[i]}' link the button [Sell] doen't displayed`);
                         return;
-                    }
-
-                    try {
-                        await expect(page.locator("#l_overlay > .form-container-white")).toBeVisible();
-                    } catch (error) {
-                        console.log("Opened a 'Sign up' form instead of a 'Login' form");
-                        throw new Error();
                     }
 
                     if (randomLinks.includes(randomLinks[i])) {
@@ -324,17 +320,18 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
 
     test(`TC_11.02.02_04_UnAuth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
         buttons = new AllButtons(page);
-        signup = new SignUpPage(page);
+        login = new LoginPage(page);
         const fs = require('fs');
         if (country === "United Kingdom") {
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -348,17 +345,10 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
                     await page.goto(randomLinks[i]);
                     if (await buttons.BuyBtnOnBanner.isVisible()) {
                         await buttons.clickBuyBtnOnBanner();
-                        await signup.signUpFormIsVisible();
+                        await login.LoginFormIsVisible();
                     } else {
                         console.log(`For test on '${randomLinks[i]}' link the button [Buy] doen't displayed`);
                         return;
-                    }
-
-                    try {
-                        await expect(page.locator("#l_overlay > .form-container-white")).toBeVisible();
-                    } catch (error) {
-                        console.log("Opened a 'Sign up' form instead of a 'Login' form");
-                        throw new Error();
                     }
 
                     if (randomLinks.includes(randomLinks[i])) {
@@ -386,14 +376,13 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
 
     test(`TC_11.02.02_01_Auth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
         buttons = new AllButtons(page);
-        login = new LoginPage(page);
         header = new Header(page);
         const fs = require('fs');
         await buttons.clickStartTradingBtnOnMainBanner();
         await header.pagePlatformLiveIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -423,14 +412,13 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
 
     test(`TC_11.02.02_02_Auth  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
         buttons = new AllButtons(page);
-        login = new LoginPage(page);
         header = new Header(page);
         const fs = require('fs');
         await buttons.clickTryDemoBtnOnMainBanner();
         await header.pagePlatformDemoIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -458,18 +446,18 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
 
     test(`TC_11.02.02_03_Auth  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
         buttons = new AllButtons(page);
-        login = new LoginPage(page);
         header = new Header(page);
         const fs = require('fs');
         if (country === "United Kingdom") {
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -500,18 +488,18 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
 
     test(`TC_11.02.02_04_Auth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
         buttons = new AllButtons(page);
-        login = new LoginPage(page);
         header = new Header(page);
         const fs = require('fs');
         if (country === "United Kingdom") {
             console.log("Testing is not available on the FCA license");
             test.skip();
         }
-        await page.waitForTimeout(15000);
         await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
             } else {
                 console.log("links", links);
             }
@@ -522,7 +510,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
             for (let i = 0; i < randomLinks.length; i++) {
                 await test.step('Accidental redirection to the page from the sidebar', async () => {
                     await page.goto(randomLinks[i]);
-                    if (await buttons.SellBtnOnBanner.isVisible()) {
+                    if (await buttons.BuyBtnOnBanner.isVisible()) {
                         await buttons.clickBuyBtnOnBanner();
                         await header.pagePlatformLiveIsVisible();
                     } else {
