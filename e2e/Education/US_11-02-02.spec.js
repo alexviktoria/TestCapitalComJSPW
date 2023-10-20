@@ -12,8 +12,8 @@ let buttons;
 let signup;
 let login;
 let pretest;
-const language = "en";
-const country = "United Kingdom"
+const language = "es";
+const country = "Spain"
 function getRandomElements(array, count) {
     const randomized = array.slice();
     for (let i = randomized.length - 1; i > 1; i--) {
@@ -179,6 +179,45 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
                         await signup.signUpFormIsVisible();
                     } else {
                         console.log(`For test on '${randomLinks[i]}' link the button [Buy] doen't displayed`);
+                        return;
+                    }
+
+                    if (randomLinks.includes(randomLinks[i])) {
+                        console.log(`Testing on the '${randomLinks[i]}' link was successfully completed `);
+                    } else {
+                        console.log(`Testing on the '${randomLinks[i]}' link was failed`);
+                    }
+                });
+            };
+        });
+    });
+
+    test(`TC_11.02.02_05_UnReg  > Test button [Start Trading] in the Content block on '${language}' language`, async () => {
+        buttons = new AllButtons(page);
+        signup = new SignUpPage(page);
+        const fs = require('fs');
+        await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
+            const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+            if (links.length === 0) {
+                console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
+            } else {
+                console.log("links", links);
+            }
+            // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
+            fs.writeFileSync('links.txt', links.join('\n'));
+            const fileContent = fs.readFileSync('links.txt', 'utf-8');
+            const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
+            const randomLinks = await getRandomElements(linksFromFile, 3);
+            for (let i = 0; i < randomLinks.length; i++) {
+                await test.step('Accidental redirection to the page from the sidebar', async () => {
+                    await page.goto(randomLinks[i]);
+                    if (await buttons.contetntBlockStartTradingBtn.isVisible()) {
+                        await buttons.clickContentBlockStartTradingBtn();
+                        await signup.signUpFormIsVisible();
+                    } else {
+                        console.log(`For test on '${randomLinks[i]}' link the button [Start Trading] doen't displayed`);
                         return;
                     }
 
@@ -360,6 +399,47 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             };
         });
     })
+
+    test(`TC_11.02.02_05_UnAuth  > Test button [Start Trading] in the Content block on '${language}' language`, async () => {
+        buttons = new AllButtons(page);
+        login = new LoginPage(page);
+        const fs = require('fs');
+        await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
+            const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+            if (links.length === 0) {
+                console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
+            } else {
+                console.log("links", links);
+            }
+            // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
+            fs.writeFileSync('links.txt', links.join('\n'));
+            const fileContent = fs.readFileSync('links.txt', 'utf-8');
+            const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
+            const randomLinks = await getRandomElements(linksFromFile, 3);
+            for (let i = 0; i < randomLinks.length; i++) {
+                await test.step('Accidental redirection to the page from the sidebar', async () => {
+                    await page.goto(randomLinks[i]);
+                    if (await buttons.contetntBlockStartTradingBtn.isVisible()) {
+                        await buttons.clickContentBlockStartTradingBtn();
+                        await login.LoginFormIsVisible();
+                    } else {
+                        console.log(`For test on '${randomLinks[i]}' link the button [Start Trading] doen't displayed`);
+                        return;
+                    }
+
+                    if (randomLinks.includes(randomLinks[i])) {
+                        console.log(`Testing on the '${randomLinks[i]}' link was successfully completed `);
+                    } else {
+                        console.log(`Testing on the '${randomLinks[i]}' link was failed`);
+                    }
+                });
+            };
+        });
+    });
+
+    
 });
 
 test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role", () => {
@@ -527,4 +607,43 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
             };
         });
     })
+
+    test(`TC_11.02.02_05_Auth  > Test button [Start Trading] in the Content block on '${language}' language`, async () => {
+        buttons = new AllButtons(page);
+        header = new Header(page);
+        const fs = require('fs');
+        await test.step("Checking for links in sidebar items", async () => {
+            await page.waitForTimeout(10000);
+            const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
+            if (links.length === 0) {
+                console.log("There are no links on this page and testing of the second level is impossible");
+                test.skip();
+            } else {
+                console.log("links", links);
+            }
+            // запись элементов массива "links" в файл "links.txt" с использованием метода "writeFileSync" из модуля "fs"
+            fs.writeFileSync('links.txt', links.join('\n'));
+            const fileContent = fs.readFileSync('links.txt', 'utf-8');
+            const linksFromFile = fileContent.split('\n').filter((link) => link !== '');
+            const randomLinks = await getRandomElements(linksFromFile, 3);
+            for (let i = 0; i < randomLinks.length; i++) {
+                await test.step('Accidental redirection to the page from the sidebar', async () => {
+                    await page.goto(randomLinks[i]);
+                    if (await buttons.contetntBlockStartTradingBtn.isVisible()) {
+                        await buttons.clickContentBlockStartTradingBtn();
+                        await header.pagePlatformLiveIsVisible();
+                    } else {
+                        console.log(`For test on '${randomLinks[i]}' link the button [Start Trading] doen't displayed`);
+                        return;
+                    }
+
+                    if (randomLinks.includes(randomLinks[i])) {
+                        console.log(`Testing on the '${randomLinks[i]}' link was successfully completed `);
+                    } else {
+                        console.log(`Testing on the '${randomLinks[i]}' link was failed`);
+                    }
+                });
+            };
+        });
+    });
 });
