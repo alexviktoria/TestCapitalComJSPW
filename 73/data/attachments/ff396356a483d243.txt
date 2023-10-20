@@ -1,0 +1,18 @@
+links [
+  'https://capital.com/es/trade-stocks',
+  'https://capital.com/es/trade-alibaba',
+  'https://capital.com/es/opera-amazon',
+  'https://capital.com/es/opera-amd',
+  'https://capital.com/es/opera-apple',
+  'https://capital.com/es/opera-aurora',
+  'https://capital.com/es/trade-disney',
+  'https://capital.com/es/trade-facebook',
+  'https://capital.com/es/opera-google',
+  'https://capital.com/es/operar-microsoft',
+  'https://capital.com/es/trade-netflix',
+  'https://capital.com/es/nio',
+  'https://capital.com/es/opera-tesla',
+  'https://capital.com/es/opera-twitter',
+  'https://capital.com/es/operar-uber'
+]
+For test on 'https://capital.com/es/operar-microsoft' link the button [Start Trading] doen't displayed
