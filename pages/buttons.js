@@ -9,6 +9,7 @@ class AllButtons {
         this.TradeBtnOnWidgetMostTraded = page.locator('.mostTraded__btn')
         this.SellBtnOnBanner = page.locator('a.button-main.sell')
         this.BuyBtnOnBanner = page.locator('a.button-main.buy')
+        this.contetntBlockStartTradingBtn = page.locator('[data-type = "wdg_go_to_market_btn"]')
         // Footer
         this.DownloadOnAppStore = page.locator('[data-type = "banner_capital_ios"]')
         this.DownloadOnGooglePlay = page.locator('[data-type = "banner_capital_google"]')
@@ -74,8 +75,10 @@ class AllButtons {
             await this.page.waitForNavigation(); // ожидание загрузки новой страницы
             const currentUrl = await this.page.url();
             if (currentUrl === 'https://apps.apple.com/IE/app/id1230088754?mt=8') {
+                await test.step("Page of Google Store is not opened", async () => {
                 console.log('The link to App Store instead of Google Play');
                 throw new Error();
+                });
             } else {
                 await test.step("Page of App Store is opened", async () => {
                     await expect(this.LogoGooglePlay).toBeVisible();
@@ -118,6 +121,12 @@ class AllButtons {
     async clickBuyBtnOnBanner() {
         await test.step('Click [Buy] button in the Banner [Trading Instrument]', async () => {
             await this.BuyBtnOnBanner.click();
+        })
+    }
+
+    async clickContentBlockStartTradingBtn() {
+        await test.step('Click [Start trading] button in the content block', async () => {
+            await this.contetntBlockStartTradingBtn.click();
         })
     }
 }

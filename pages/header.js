@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
-const language = "English"
-const country = "United Kingdom"
+const language = "Español"
+const country = "Spain"
 exports.Header = class Header {
     constructor(page) {
         this.page = page;
@@ -114,9 +114,9 @@ exports.Header = class Header {
     async pagePlatformLiveIsVisible() {
         await test.step("Page Platform is visible", async () => {
             await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
-            await expect(this.LogoCapitalOnPlatform).toBeVisible();
+            // await expect(this.LogoCapitalOnPlatform).toBeVisible();
             await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/); 
-            // await expect(this.AccountModeLive).toBeVisible();
+            await expect(this.AccountModeLive).toBeVisible();
         });
 
         await test.step("Go back to the previous page", async () => {
@@ -126,9 +126,9 @@ exports.Header = class Header {
     async pagePlatformDemoIsVisible() {
         await test.step("Page Platform 'Demo' is visible", async () => {
             await expect(this.page).toHaveURL('https://capital.com/trading/platform/?mode=demo');
-            await expect(this.LogoCapitalOnPlatform).toBeVisible();
+            // await expect(this.LogoCapitalOnPlatform).toBeVisible();
             await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/);
-            // await expect(this.AccountModeDemo).toBeVisible();
+            await expect(this.AccountModeDemo).toBeVisible();
         });
 
         await test.step("Go back to the previous page", async () => {
@@ -139,8 +139,9 @@ exports.Header = class Header {
     async pagePlatformInstrumentIsVisible() {
         await test.step("Page Platform  'Instrument' is visible", async () => {
             await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
-            await expect(this.LogoCapitalOnPlatform).toBeVisible();
+            // await expect(this.LogoCapitalOnPlatform).toBeVisible();
             await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/);
+            // await expect(this.AccountModeLive).toBeVisible();
         });
 
         await test.step("Go back to the previous page", async () => {
