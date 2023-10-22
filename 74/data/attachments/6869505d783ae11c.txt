@@ -1,0 +1,15 @@
+links [
+  'https://capital.com/pl/trade-stocks',
+  'https://capital.com/pl/handlovac-amd',
+  'https://capital.com/pl/handlowac-amazon',
+  'https://capital.com/pl/handlovac-apple',
+  'https://capital.com/pl/handlovac-canopy-growth',
+  'https://capital.com/pl/handlovac-facebook',
+  'https://capital.com/pl/handlovac-google',
+  'https://capital.com/pl/handlovac-microsoft',
+  'https://capital.com/pl/handlovac-netflix',
+  'https://capital.com/pl/nio',
+  'https://capital.com/pl/handlovac-tesla',
+  'https://capital.com/pl/handlovac-uber'
+]
+Testing on the 'https://capital.com/pl/handlowac-amazon' link was successfully completed 
