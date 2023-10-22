@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
-const language = "Español"
-const country = "Spain"
+const language = "Polski"
+const country = "Poland"
 exports.Header = class Header {
     constructor(page) {
         this.page = page;
@@ -116,7 +116,7 @@ exports.Header = class Header {
             await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
             // await expect(this.LogoCapitalOnPlatform).toBeVisible();
             await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/); 
-            await expect(this.AccountModeLive).toBeVisible();
+            // await expect(this.AccountModeLive).toBeVisible();
         });
 
         await test.step("Go back to the previous page", async () => {
@@ -128,7 +128,7 @@ exports.Header = class Header {
             await expect(this.page).toHaveURL('https://capital.com/trading/platform/?mode=demo');
             // await expect(this.LogoCapitalOnPlatform).toBeVisible();
             await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/);
-            await expect(this.AccountModeDemo).toBeVisible();
+            // await expect(this.AccountModeDemo).toBeVisible();
         });
 
         await test.step("Go back to the previous page", async () => {

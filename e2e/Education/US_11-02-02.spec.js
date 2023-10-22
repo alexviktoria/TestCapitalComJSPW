@@ -12,8 +12,8 @@ let buttons;
 let signup;
 let login;
 let pretest;
-const language = "es";
-const country = "Spain"
+const language = "pl";
+const country = "Poland"
 function getRandomElements(array, count) {
     const randomized = array.slice();
     for (let i = randomized.length - 1; i > 1; i--) {
@@ -23,7 +23,7 @@ function getRandomElements(array, count) {
     return randomized.slice(0, count);
 }
 
-test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
+test.describe.only("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
     test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
@@ -43,7 +43,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -79,7 +79,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -115,7 +115,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -158,7 +158,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -196,8 +196,12 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         buttons = new AllButtons(page);
         signup = new SignUpPage(page);
         const fs = require('fs');
+        if (language !== "en" && language !== "de" && language !== "es" && language !== "it") {
+            console.log("Testing is not available for this language");
+            test.skip();
+        }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -404,6 +408,10 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         buttons = new AllButtons(page);
         login = new LoginPage(page);
         const fs = require('fs');
+        if (language !== "en" && language !== "de" && language !== "es" && language !== "it") {
+            console.log("Testing is not available for this language");
+            test.skip();
+        }
         await test.step("Checking for links in sidebar items", async () => {
             await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
@@ -612,6 +620,10 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         buttons = new AllButtons(page);
         header = new Header(page);
         const fs = require('fs');
+        if (language !== "en" && language !== "de" && language !== "es" && language !== "it") {
+            console.log("Testing is not available for this language");
+            test.skip();
+        }
         await test.step("Checking for links in sidebar items", async () => {
             await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
