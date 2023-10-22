@@ -23,7 +23,7 @@ function getRandomElements(array, count) {
     return randomized.slice(0, count);
 }
 
-test.describe.only("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
+test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role", () => {
     test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
