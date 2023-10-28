@@ -13,7 +13,6 @@ let signup;
 let login;
 let pretest
 
-
 const language = "ar"
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
