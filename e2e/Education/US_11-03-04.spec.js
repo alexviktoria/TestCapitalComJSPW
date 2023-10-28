@@ -13,15 +13,18 @@ let signup;
 let login;
 let pretest
 
-const language = "ar"
+const language = "nl";
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page, header, login);
         await test.step("Pretest for UnReg Role", async () => {
-            await pretest.pretest_UnReg_Role();
+            const selectedCountry = await pretest.pretest_UnReg_Role(); // Получаем выбранную страну
+        // Используйте выбранную страну в тестах, например:
+        console.log("Selected country:", selectedCountry);
+            // await pretest.pretest_UnReg_Role();
         });
         
     });
@@ -95,7 +98,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Role", () => {
    
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page, header,login);
@@ -173,7 +176,7 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
 
 test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role", () => {
    
-    test.beforeAll(async ({ browser }) => {
+    test.beforeEach(async ({ browser }) => {
         const context = await browser.newContext();
         page = await context.newPage();
         pretest = new Pretest(page);

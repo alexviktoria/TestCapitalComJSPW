@@ -13,8 +13,8 @@ let signup;
 let login;
 let pretest;
 
-const language = "ar";
-const country = "United Arab Emirates"
+const language = "nl";
+const country = "Australia"
 
 function getRandomElements(array, count) {
     const randomized = array.slice();
@@ -45,7 +45,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            // await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -81,7 +81,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
         await signup.signUpFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            // await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -117,7 +117,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            // await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -160,7 +160,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            // await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -203,7 +203,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnReg Role"
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(15000);
+            // await page.waitForTimeout(15000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -258,7 +258,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await login.LoginFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -293,7 +293,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
         await login.LoginFormIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -329,7 +329,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -372,7 +372,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -415,7 +415,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -472,7 +472,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         await header.pagePlatformLiveIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -508,7 +508,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
         await header.pagePlatformDemoIsVisible();
         console.log(`Testing the first level on the main page is completed successfully `);
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -543,7 +543,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -585,7 +585,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
@@ -627,7 +627,7 @@ test.describe("US_11-02-02_Education > Menu item [Shares Trading] on Auth Role",
             test.skip();
         }
         await test.step("Checking for links in sidebar items", async () => {
-            await page.waitForTimeout(10000);
+            // await page.waitForTimeout(10000);
             const links = await page.$$eval('a[data-type="sidebar_deeplink"]', (elements) => elements.map((el) => el.href));
             if (links.length === 0) {
                 console.log("There are no links on this page and testing of the second level is impossible");
