@@ -1,0 +1,1 @@
+For test on 'Nederlands' language the page "Education->Shares Trading" doesn't exist on production

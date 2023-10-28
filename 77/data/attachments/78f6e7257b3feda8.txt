@@ -1,0 +1,2 @@
+Selected country: undefined
+For test on 'Nederlands' language the page "Education->Position Trading" doesn't exist on production
