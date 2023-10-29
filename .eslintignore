@@ -1,0 +1,8 @@
+output/
+test-results/
+allure-report/
+allure-results/
+.history/
+.github/
+node_modules/
+.cache/

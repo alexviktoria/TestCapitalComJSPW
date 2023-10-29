@@ -1,28 +1,41 @@
-const { test, expect } = require("@playwright/test");
+import { test, expect } from "@playwright/test";
+
 class LoginPage {
   constructor(page) {
     this.page = page;
     this.UserName = page.locator("#l_f_email > .field__control");
     this.Password = page.locator("#l_f_pass > .field__control");
-    this.ContinueButton = page.locator(".form-container-white > .form-container-small-content > form > .btn");
+    this.ContinueButton = page.locator(
+      ".form-container-white > .form-container-small-content > form > .btn",
+    );
     this.BtnLogIn = page.locator("#wg_loginBtn");
-    this.BtnMyAccount = page.locator('button#wg_userarea');
-    this.Btnlogout = page.locator('.logout-user');
+    this.BtnMyAccount = page.locator("button#wg_userarea");
+    this.Btnlogout = page.locator(".logout-user");
     this.FormLogIn = page.locator("#l_overlay > .form-container-white");
-    this.HeaderNameLogIn = page.locator("[class='form-container-small-header'] > .h1");
+    this.HeaderNameLogIn = page.locator(
+      "[class='form-container-small-header'] > .h1",
+    );
     this.LogMeAfter = page.locator("label.checkbox");
     this.ForgotPasswordLink = page.locator('[class="l_btn_forgot"]');
-    this.SignUpLinkForm = page.locator(".form-container-white > .form-container-small-header > p > .l_btn_signup");
-    this.CloseLoginFormBtn = page.locator('#l_overlay .form-container-white .button-cleared');
+    this.SignUpLinkForm = page.locator(
+      ".form-container-white > .form-container-small-header > p > .l_btn_signup",
+    );
+    this.CloseLoginFormBtn = page.locator(
+      "#l_overlay .form-container-white .button-cleared",
+    );
     //Form Login on Platform
-    this.FormLoginOnPlatform = page.locator('cdk-dialog-container#login');
-    this.HeaderNameLoginOnPlatform = page.locator('.modal__header-title');
-    this.SignUpLinkFormOnPlatform = page.locator(':nth-child(1) > .txt__link');
-    this.EmailOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(3)');
-    this.PasswordOnPlatform = page.locator('.form.ng-pristine > :nth-child(1) > :nth-child(5)');
-    this.ForgotPasswordLinkOnPlatform = page.locator('.txt.txt_link');
-    this.ContinueBtnOnPlatform = page.locator('.button-main')
-    this.LogoCapitalOnPlatform = page.locator('a.logo')
+    this.FormLoginOnPlatform = page.locator("cdk-dialog-container#login");
+    this.HeaderNameLoginOnPlatform = page.locator(".modal__header-title");
+    this.SignUpLinkFormOnPlatform = page.locator(":nth-child(1) > .txt__link");
+    this.EmailOnPlatform = page.locator(
+      ".form.ng-pristine > :nth-child(1) > :nth-child(3)",
+    );
+    this.PasswordOnPlatform = page.locator(
+      ".form.ng-pristine > :nth-child(1) > :nth-child(5)",
+    );
+    this.ForgotPasswordLinkOnPlatform = page.locator(".txt.txt_link");
+    this.ContinueBtnOnPlatform = page.locator(".button-main");
+    this.LogoCapitalOnPlatform = page.locator("a.logo");
   }
 
   async visit() {
@@ -50,7 +63,6 @@ class LoginPage {
   async logoutUser() {
     await this.BtnMyAccount.click();
     await this.Btnlogout.click();
-
   }
 
   async LoginFormIsVisible() {
@@ -66,11 +78,12 @@ class LoginPage {
         await expect(this.SignUpLinkForm).toBeVisible();
         await this.CloseLoginFormBtn.click();
       } catch (error) {
-        console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+        console.log(
+          "BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role",
+        );
         throw new Error();
       }
     });
-
   }
 
   async LoginFormOnPlatformIsVisible() {
@@ -80,19 +93,23 @@ class LoginPage {
         await expect(this.HeaderNameLoginOnPlatform).toBeVisible();
         await expect(this.SignUpLinkFormOnPlatform).toBeVisible();
         await expect(this.EmailOnPlatform).toHaveAttribute("type", "email");
-        await expect(this.PasswordOnPlatform).toHaveAttribute("type", "password");
+        await expect(this.PasswordOnPlatform).toHaveAttribute(
+          "type",
+          "password",
+        );
         await expect(this.ContinueBtnOnPlatform).toBeVisible();
       } catch (error) {
-        console.log("BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role");
+        console.log(
+          "BUG!!! Opened a 'Sign up' form instead of a 'Login' form in UnAuth role",
+        );
         throw new Error();
       }
     });
-    
+
     await test.step("Go back to the previous page", async () => {
       await this.page.goBack();
     });
-
   }
-
 }
-module.exports = { LoginPage };
+
+export { LoginPage };

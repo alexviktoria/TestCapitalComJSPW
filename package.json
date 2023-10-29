@@ -11,7 +11,10 @@
     "test:report": "npx playwright test --reporter=list,allure-playwright --workers 1",
     "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
     "allure:clear": "rm -r allure-results/ allure-report/ test-results/ playwright-report / links.txt || true",
-    "APITests": "npx playwright test --grep @API"
+    "APITests": "npx playwright test --grep @API",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write e2e/**/*.js fixtures/**/*.json pages/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +30,20 @@
   "devDependencies": {
     "@playwright/test": "^1.38.0",
     "@types/node": "^20.6.2",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
     "allure-commandline": "^2.24.1",
-    "allure-playwright": "^2.8.1"
+    "allure-playwright": "^2.8.1",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-playwright": "^0.18.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "3.0.3",
+    "typescript": "^5.2.2"
   }
 }
