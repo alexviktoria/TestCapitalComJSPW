@@ -1,0 +1,7 @@
+build
+coverage
+test-results
+allure-report
+allure-results
+.idea
+.github
