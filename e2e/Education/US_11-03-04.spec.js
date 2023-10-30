@@ -1,10 +1,10 @@
 // @ts-check
-import { test } from "@playwright/test";
-import { Header } from "../../pages/header";
-import { LoginPage } from "../../pages/login";
-import { SignUpPage } from "../../pages/signup";
-import { AllButtons } from "../../pages/buttons";
-import { Pretest } from "../../pages/pretest";
+import { test } from '@playwright/test';
+import { Header } from '../../pages/header';
+import { LoginPage } from '../../pages/login';
+import { SignUpPage } from '../../pages/signup';
+import { AllButtons } from '../../pages/buttons';
+import { Pretest } from '../../pages/pretest';
 
 let header;
 let page;
@@ -13,17 +13,17 @@ let signup;
 let login;
 let pretest;
 
-const language = "nl";
+const language = 'nl';
 
-test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role", () => {
+test.describe('US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role', () => {
   test.beforeEach(async ({ browser }) => {
     const context = await browser.newContext();
     page = await context.newPage();
     pretest = new Pretest(page, header, login);
-    await test.step("Pretest for UnReg Role", async () => {
+    await test.step('Pretest for UnReg Role', async () => {
       const selectedCountry = await pretest.pretestUnRegRole(); // Получаем выбранную страну
       // Используйте выбранную страну в тестах, например:
-      console.log("Selected country:", selectedCountry);
+      console.log('Selected country:', selectedCountry);
       // await pretest.pretestUnRegRole();
     });
   });
@@ -88,12 +88,12 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading]  on UnReg Ro
   });
 });
 
-test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Role", () => {
+test.describe('US_11-03-04_Education > Menu item [Position Trading] on UnAuth Role', () => {
   test.beforeEach(async ({ browser }) => {
     const context = await browser.newContext();
     page = await context.newPage();
     pretest = new Pretest(page, header, login);
-    await test.step("Pretest for UnAuth Role", async () => {
+    await test.step('Pretest for UnAuth Role', async () => {
       await pretest.pretestUnAuthRole();
     });
   });
@@ -158,12 +158,12 @@ test.describe("US_11-03-04_Education > Menu item [Position Trading] on UnAuth Ro
   });
 });
 
-test.describe("US_11-03-04_Education > Menu item [Position Trading] on Auth Role", () => {
+test.describe('US_11-03-04_Education > Menu item [Position Trading] on Auth Role', () => {
   test.beforeEach(async ({ browser }) => {
     const context = await browser.newContext();
     page = await context.newPage();
     pretest = new Pretest(page);
-    await test.step("Pretest for Auth Role", async () => {
+    await test.step('Pretest for Auth Role', async () => {
       await pretest.pretest_Auth_Role();
     });
   });
