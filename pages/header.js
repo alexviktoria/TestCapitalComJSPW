@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const language = "English";
-const country = "United Kingdom";
+const language = 'English';
+const country = 'United Kingdom';
 
 class Header {
   constructor(page) {
@@ -11,46 +11,28 @@ class Header {
     this.PositionTrading = page.locator('a[data-type="nav_id528"]');
     this.SwingTrading = page.locator('a[data-type="nav_id529"]');
     this.SharesTrading = page.locator('a[data-type="nav_id106"]');
-    this.CountryAndLang = page.locator("div .licLangSw__btn");
-    this.DropdownCountry = page.getByRole("textbox");
-    this.AcceptAllCookies = page.locator("#onetrust-accept-btn-handler");
-    this.GetCountry = page.getByRole("link", { name: country });
-    this.GetLanguage = page.getByRole("link", { name: language });
+    this.CountryAndLang = page.locator('div .licLangSw__btn');
+    this.DropdownCountry = page.getByRole('textbox');
+    this.AcceptAllCookies = page.locator('#onetrust-accept-btn-handler');
+    this.GetCountry = page.getByRole('link', { name: country });
+    this.GetLanguage = page.getByRole('link', { name: language });
     // Platform
-    this.LogoCapitalOnPlatform = page.locator("a.logo");
-    this.AccountModeLive = page.locator("div.account__mode_live");
-    this.AccountModeDemo = page.locator("div.account__mode_demo");
+    this.LogoCapitalOnPlatform = page.locator('a.logo');
+    this.AccountModeLive = page.locator('div.account__mode_live');
+    this.AccountModeDemo = page.locator('div.account__mode_demo');
     // Countries
-    this.GermanyCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_germany"]',
-    );
-    this.TurkeyCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_turkey"]',
-    );
-    this.Australia = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_australia"]',
-    );
-    this.UnitedKingdomCountry = page.getByRole("link", {
-      name: "United Kingdom",
+    this.GermanyCountry = page.locator('li.js-analyticsClick[data-type="nav_country_germany"]');
+    this.TurkeyCountry = page.locator('li.js-analyticsClick[data-type="nav_country_turkey"]');
+    this.Australia = page.locator('li.js-analyticsClick[data-type="nav_country_australia"]');
+    this.UnitedKingdomCountry = page.getByRole('link', {
+      name: 'United Kingdom',
     });
-    this.SpainCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_spain"]',
-    );
-    this.ArabicCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_united_arab_emirates"]',
-    );
-    this.FranceCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_france"]',
-    );
-    this.GermanyCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_germany"]',
-    );
-    this.GreeceCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_greece"]',
-    );
-    this.PolandCountry = page.locator(
-      'li.js-analyticsClick[data-type="nav_country_poland"]',
-    );
+    this.SpainCountry = page.locator('li.js-analyticsClick[data-type="nav_country_spain"]');
+    this.ArabicCountry = page.locator('li.js-analyticsClick[data-type="nav_country_united_arab_emirates"]');
+    this.FranceCountry = page.locator('li.js-analyticsClick[data-type="nav_country_france"]');
+    this.GermanyCountry = page.locator('li.js-analyticsClick[data-type="nav_country_germany"]');
+    this.GreeceCountry = page.locator('li.js-analyticsClick[data-type="nav_country_greece"]');
+    this.PolandCountry = page.locator('li.js-analyticsClick[data-type="nav_country_poland"]');
   }
 
   // Methods
@@ -71,11 +53,11 @@ class Header {
   }
 
   async clickPositionTrading() {
-    await test.step("Hover Education Menu", async () => {
+    await test.step('Hover Education Menu', async () => {
       await this.getEducationMenu.hover();
-      await this.page.waitForLoadState("networkidle");
+      await this.page.waitForLoadState('networkidle');
     });
-    await test.step("Click Position Trading", async () => {
+    await test.step('Click Position Trading', async () => {
       if (await this.PositionTrading.isVisible()) {
         await this.PositionTrading.click();
       } else {
@@ -88,11 +70,11 @@ class Header {
   }
 
   async clickSwingTrading() {
-    await test.step("Hover Education Menu", async () => {
+    await test.step('Hover Education Menu', async () => {
       await this.getEducationMenu.hover();
-      await this.page.waitForLoadState("networkidle");
+      await this.page.waitForLoadState('networkidle');
     });
-    await test.step("Click Position Trading", async () => {
+    await test.step('Click Position Trading', async () => {
       if (await this.SwingTrading.isVisible()) {
         await this.SwingTrading.click();
       } else {
@@ -105,11 +87,11 @@ class Header {
   }
 
   async clickSharesTrading() {
-    await test.step("Hover Education Menu", async () => {
+    await test.step('Hover Education Menu', async () => {
       await this.getEducationMenu.hover();
-      await this.page.waitForLoadState("networkidle");
+      await this.page.waitForLoadState('networkidle');
     });
-    await test.step("Click Shares Trading", async () => {
+    await test.step('Click Shares Trading', async () => {
       if (await this.SharesTrading.isVisible()) {
         await this.SharesTrading.click();
       } else {
@@ -138,45 +120,39 @@ class Header {
   }
 
   async pagePlatformLiveIsVisible() {
-    await test.step("Page Platform is visible", async () => {
-      await expect(this.page).toHaveURL(
-        "https://capital.com/trading/platform/",
-      );
+    await test.step('Page Platform is visible', async () => {
+      await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
       // await expect(this.LogoCapitalOnPlatform).toBeVisible();
       await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/);
       // await expect(this.AccountModeLive).toBeVisible();
     });
 
-    await test.step("Go back to the previous page", async () => {
+    await test.step('Go back to the previous page', async () => {
       await this.page.goBack();
     });
   }
   async pagePlatformDemoIsVisible() {
     await test.step("Page Platform 'Demo' is visible", async () => {
-      await expect(this.page).toHaveURL(
-        "https://capital.com/trading/platform/?mode=demo",
-      );
+      await expect(this.page).toHaveURL('https://capital.com/trading/platform/?mode=demo');
       // await expect(this.LogoCapitalOnPlatform).toBeVisible();
       await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/);
       // await expect(this.AccountModeDemo).toBeVisible();
     });
 
-    await test.step("Go back to the previous page", async () => {
+    await test.step('Go back to the previous page', async () => {
       await this.page.goBack();
     });
   }
 
   async pagePlatformInstrumentIsVisible() {
     await test.step("Page Platform  'Instrument' is visible", async () => {
-      await expect(this.page).toHaveURL(
-        "https://capital.com/trading/platform/",
-      );
+      await expect(this.page).toHaveURL('https://capital.com/trading/platform/');
       // await expect(this.LogoCapitalOnPlatform).toBeVisible();
       await expect(this.page).toHaveTitle(/Trading Platform | Capital.com/);
       // await expect(this.AccountModeLive).toBeVisible();
     });
 
-    await test.step("Go back to the previous page", async () => {
+    await test.step('Go back to the previous page', async () => {
       await this.page.goBack();
     });
   }
