@@ -1,26 +1,15 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "project": "./tsconfig.json"
-    },
-    "env": {
-        "browser": true,
-        "node": true
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "prettier",
-        "playwright"
-    ],
-    "extends": [
-//        "airbnb",
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier"
-    ],
-    "rules": {
-        "@typescript-eslint/no-floating-promises": "error"
-    }
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["playwright", "no-floating-promise", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:playwright/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-floating-promise/no-floating-promise": 2
+  }
 }

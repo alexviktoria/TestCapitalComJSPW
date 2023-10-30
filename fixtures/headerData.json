@@ -1,5 +1,11 @@
 {
-  "headerMenuButtonItems": ["Education", "Markets", "Products and services", "News and Analysis", "More"],
+  "headerMenuButtonItems": [
+    "Education",
+    "Markets",
+    "Products and services",
+    "News and Analysis",
+    "More"
+  ],
 
   "endPointsMenuItems": [
     "it/learn-to-trade",
