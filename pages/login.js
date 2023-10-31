@@ -3,8 +3,8 @@ import { test, expect } from '@playwright/test';
 class LoginPage {
   constructor(page) {
     this.page = page;
-    this.UserName = page.locator('#l_f_email > .field__control');
-    this.Password = page.locator('#l_f_pass > .field__control');
+    this.fieldEmail = page.locator('#l_f_email > .field__control');
+    this.fieldPassword = page.locator('#l_f_pass > .field__control');
     this.ContinueButton = page.locator('.form-container-white > .form-container-small-content > form > .btn');
     this.BtnLogIn = page.locator('#wg_loginBtn');
     this.BtnMyAccount = page.locator('button#wg_userarea');
@@ -31,8 +31,8 @@ class LoginPage {
   }
 
   async validLogin(email, password) {
-    await this.UserName.fill(email);
-    await this.Password.fill(password);
+    await this.fieldEmail.fill(email);
+    await this.fieldPassword.fill(password);
     // await this.ContinueButton.click();
   }
 
@@ -58,8 +58,8 @@ class LoginPage {
       try {
         await expect(this.FormLogIn).toBeVisible();
         await expect(this.HeaderNameLogIn).toBeVisible();
-        await expect(this.UserName).toHaveAttribute('type', 'email');
-        await expect(this.Password).toHaveAttribute('type', 'password');
+        await expect(this.fieldEmail).toHaveAttribute('type', 'email');
+        await expect(this.fieldPassword).toHaveAttribute('type', 'password');
         await expect(this.LogMeAfter).toBeChecked();
         await expect(this.ForgotPasswordLink).toBeVisible();
         await expect(this.ContinueButton).toBeVisible();

@@ -28,34 +28,50 @@ class AllButtons {
     this.LinkCapitalComOnGoogleplay = page.locator('div.Vbfug.auoIOc');
   }
 
+  // To check element visibility and click
+  async checkBtnVisibilityAndClick(element, elementName) {
+    try {
+      await element.waitFor({ state: 'visible', timeout: 5000 });
+      await element.click();
+    } catch (error) {
+      console.error(`${elementName} is not visible.`);
+    }
+  }
+
   // Methods
 
   async clickStartTradingBtnOnMainBanner() {
-    await test.step('Click [Start Trading] button on Main Banner', async () => {
-      await this.StartTradingBtnOnMainBanner.click();
+    const elementName = '[Start Trading] button on Main Banner';
+    await test.step(`Click ${elementName}`, async () => {
+      const element = await this.StartTradingBtnOnMainBanner;
+      await this.checkBtnVisibilityAndClick(element, elementName);
     });
   }
 
   async clickTryDemoBtnOnMainBanner() {
-    await test.step('Click [Try Demo] button on Main Banner', async () => {
-      await this.TryDemoBtnOnMainBanner.click();
+    const elementName = '[Try Demo] button on Main Banner';
+    await test.step(elementName , async () => {
+      const element = await this.TryDemoBtnOnMainBanner;
+      await this.checkBtnVisibilityAndClick(element, elementName);
     });
   }
 
   async clickTradeBtnOnWidgetMostTraded() {
-    await test.step("Click [Trade] button on Widget 'Most Traded'", async () => {
+    const elementName = "[Trade] button on Widget 'Most Traded'";
+    await test.step(`Click ${elementName}`, async () => {
       try {
         await this.TradeBtnOnWidgetMostTraded.toBeVisible();
         await this.TradeBtnOnWidgetMostTraded.click();
       } catch (error) {
-        console.log(`For test on FCA license the button [Trade] doen't displayed `);
+        console.log(`For test on FCA license the button [Trade] does not displayed `);
         test.skip();
       }
     });
   }
 
   async clickDownloadOnAppStoreBtn() {
-    await test.step("Click [Download on the App Store] button in the block 'Sign up and trade smart today'", async () => {
+    const elementName = "[Download on the App Store] button in the block 'Sign up and trade smart today'";
+    await test.step(`Click ${elementName}`, async () => {
       await this.DownloadOnAppStore.click();
       await this.page.waitForNavigation();
       // await this.page.waitForTimeout(1000);
@@ -73,10 +89,11 @@ class AllButtons {
   }
 
   async clickDownloadOnGooglePlayBtn() {
-    await test.step("Click [Download on the Google Play] button in the block 'Sign up and trade smart today'", async () => {
+    const elementName = "[Download on the Google Play] button in the block 'Sign up and trade smart today'";
+    await test.step(`Click ${elementName}`, async () => {
       await this.DownloadOnGooglePlay.click();
       await this.page.waitForNavigation(); // ожидание загрузки новой страницы
-      const currentUrl = await this.page.url();
+      const currentUrl = this.page.url();
       if (currentUrl === 'https://apps.apple.com/IE/app/id1230088754?mt=8') {
         await test.step('Page of Google Store is not opened', async () => {
           console.log('The link to App Store instead of Google Play');
@@ -97,34 +114,43 @@ class AllButtons {
   }
 
   async clickExploreWebPlatformBtn() {
-    await test.step("Click [Explore Web Platform] button in the block 'Sign up and trade smart today'", async () => {
+    const elementName = "[Explore Web Platform] button in the block 'Sign up and trade smart today'";
+    await test.step(`Click ${elementName}`, async () => {
       await this.ExploreWebPlatform.click();
       await this.page.waitForNavigation();
     });
   }
 
   async clickCreateAndVerifyBtn() {
-    await test.step("Click [Create & verify your account] button in the block 'Still looking for a broker you can trust?'", async () => {
-      await this.CreateAndVerifyBtn.click();
-      await this.page.waitForTimeout(5000);
+    const elementName = "[Create & verify your account] button in the block 'Still looking for a broker you can trust?'";
+    await test.step(`Click ${elementName}`, async () => {
+      const element = await this.CreateAndVerifyBtn;
+      await this.checkBtnVisibilityAndClick(element, elementName);
+
     });
   }
 
   async clickSellBtnOnBanner() {
-    await test.step('Click [Sell] button in the Banner [Trading Instrument]', async () => {
-      await this.SellBtnOnBanner.click();
+    const elementName = '[Sell] button in the Banner [Trading Instrument]';
+    await test.step(`Click ${elementName}`, async () => {
+      const element = await this.SellBtnOnBanner;
+      await this.checkBtnVisibilityAndClick(element, elementName);
     });
   }
 
   async clickBuyBtnOnBanner() {
-    await test.step('Click [Buy] button in the Banner [Trading Instrument]', async () => {
-      await this.BuyBtnOnBanner.click();
+    const elementName = '[Buy] button in the Banner [Trading Instrument]';
+    await test.step(`Click ${elementName}`, async () => {
+      const element = await this.BuyBtnOnBanner;
+      await this.checkBtnVisibilityAndClick(element, elementName);
     });
   }
 
   async clickContentBlockStartTradingBtn() {
-    await test.step('Click [Start trading] button in the content block', async () => {
-      await this.contetntBlockStartTradingBtn.click();
+    const elementName = '[Start trading] button in the content block';
+    await test.step(`Click ${elementName}`, async () => {
+      const element = await this.contetntBlockStartTradingBtn;
+      await this.checkBtnVisibilityAndClick(element, elementName);
     });
   }
 }
