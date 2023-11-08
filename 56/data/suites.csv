@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"failed","Wed Sep 27 13:14:00 GMT 2023","Wed Sep 27 13:14:29 GMT 2023","29158","chromium","Education/US_11-02-02.spec.js","US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role","","","TC_11.02.02_02_UnAuth  > Test button [Try Demo] in Main banner on 'es' language",""
-"failed","Wed Sep 27 13:13:30 GMT 2023","Wed Sep 27 13:13:59 GMT 2023","29068","chromium","Education/US_11-02-02.spec.js","US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role","","","TC_11.02.02_01_UnAuth  > Test button [Start Trading] in Main banner on 'es' language",""
