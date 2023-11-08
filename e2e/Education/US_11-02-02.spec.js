@@ -14,8 +14,9 @@ let signup;
 let login;
 let pretest;
 
-const language = 'en';
+const language = 'fr';
 const country = 'United Kingdom';
+const license = 'FCA';
 
 function getRandomElements(array, count) {
   const randomized = array.slice();
@@ -38,7 +39,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role'
     await header.clickSharesTrading();
   });
 
-  test(`TC_11.02.02_01_UnReg  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
+  test(`TC_11.02.02_01_UnReg  > Test button [Start Trading] in Main banner on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     signup = new SignUpPage(page);
     await buttons.clickStartTradingBtnOnMainBanner();
@@ -73,7 +74,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role'
     });
   });
 
-  test(`TC_11.02.02_02_UnReg  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
+  test(`TC_11.02.02_02_UnReg  > Test button [Try Demo] in Main banner on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     signup = new SignUpPage(page);
 
@@ -108,7 +109,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role'
     });
   });
 
-  test(`TC_11.02.02_03_UnReg  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+  test(`TC_11.02.02_03_UnReg  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     signup = new SignUpPage(page);
 
@@ -152,7 +153,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role'
     });
   });
 
-  test(`TC_11.02.02_04_UnReg  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+  test(`TC_11.02.02_04_UnReg  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     signup = new SignUpPage(page);
 
@@ -195,7 +196,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role'
     });
   });
 
-  test(`TC_11.02.02_05_UnReg  > Test button [Start Trading] in the Content block on '${language}' language`, async () => {
+  test(`TC_11.02.02_05_UnReg  > Test button [Start Trading] in the Content block on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     signup = new SignUpPage(page);
 
@@ -251,7 +252,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
     await header.clickSharesTrading();
   });
 
-  test(`TC_11.02.02_01_UnAuth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
+  test(`TC_11.02.02_01_UnAuth  > Test button [Start Trading] in Main banner on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     login = new LoginPage(page);
 
@@ -286,7 +287,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
     });
   });
 
-  test(`TC_11.02.02_02_UnAuth  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
+  test(`TC_11.02.02_02_UnAuth  > Test button [Try Demo] in Main banner on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     login = new LoginPage(page);
 
@@ -321,7 +322,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
     });
   });
 
-  test(`TC_11.02.02_03_UnAuth  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+  test(`TC_11.02.02_03_UnAuth  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     login = new LoginPage(page);
 
@@ -364,7 +365,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
     });
   });
 
-  test(`TC_11.02.02_04_UnAuth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+  test(`TC_11.02.02_04_UnAuth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     login = new LoginPage(page);
 
@@ -407,7 +408,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
     });
   });
 
-  test(`TC_11.02.02_05_UnAuth  > Test button [Start Trading] in the Content block on '${language}' language`, async () => {
+  test(`TC_11.02.02_05_UnAuth  > Test button [Start Trading] in the Content block on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     login = new LoginPage(page);
 
@@ -463,7 +464,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares Trading] on Auth Role',
     await header.clickSharesTrading();
   });
 
-  test(`TC_11.02.02_01_Auth  > Test button [Start Trading] in Main banner on '${language}' language`, async () => {
+  test(`TC_11.02.02_01_Auth  > Test button [Start Trading] in Main banner on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     header = new Header(page);
 
@@ -499,7 +500,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares Trading] on Auth Role',
     });
   });
 
-  test(`TC_11.02.02_02_Auth  > Test button [Try Demo] in Main banner on '${language}' language`, async () => {
+  test(`TC_11.02.02_02_Auth  > Test button [Try Demo] in Main banner on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     header = new Header(page);
 
@@ -533,7 +534,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares Trading] on Auth Role',
     });
   });
 
-  test(`TC_11.02.02_03_Auth  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+  test(`TC_11.02.02_03_Auth  > Test button [Sell] in the Banner [Trading Instrument] on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     header = new Header(page);
 
@@ -575,7 +576,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares Trading] on Auth Role',
     });
   });
 
-  test(`TC_11.02.02_04_Auth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language`, async () => {
+  test(`TC_11.02.02_04_Auth  > Test button [Buy] in the Banner [Trading Instrument] on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     header = new Header(page);
 
@@ -617,7 +618,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares Trading] on Auth Role',
     });
   });
 
-  test(`TC_11.02.02_05_Auth  > Test button [Start Trading] in the Content block on '${language}' language`, async () => {
+  test(`TC_11.02.02_05_Auth  > Test button [Start Trading] in the Content block on '${language}' language and '${license}' license`, async () => {
     buttons = new AllButtons(page);
     header = new Header(page);
 
