@@ -26,9 +26,9 @@ class Pretest {
     await test.step('Select country ', async () => {
       await this.header.hoverCountryAndLang();
       await this.header.clickDropdownCountry();
-      const selectedCountry = await this.header.clickGetCountry(); // Сохраняем выбранную страну
-      return selectedCountry; // Возвращаем выбранную страну
-      // await this.header.clickGetCountry();
+      // const selectedCountry = await this.header.clickGetCountry(); // Сохраняем выбранную страну
+      // return selectedCountry; // Возвращаем выбранную страну
+      await this.header.clickGetCountry();
     });
     await test.step('Select language', async () => {
       await this.header.hoverCountryAndLang();
