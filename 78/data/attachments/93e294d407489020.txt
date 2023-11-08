@@ -1,0 +1,21 @@
+Testing the first level on the main page is completed successfully 
+links [
+  'https://capital.com/es/trade-stocks',
+  'https://capital.com/es/trade-alibaba',
+  'https://capital.com/es/opera-amazon',
+  'https://capital.com/es/opera-amd',
+  'https://capital.com/es/opera-apple',
+  'https://capital.com/es/opera-aurora',
+  'https://capital.com/es/trade-disney',
+  'https://capital.com/es/trade-facebook',
+  'https://capital.com/es/opera-google',
+  'https://capital.com/es/operar-microsoft',
+  'https://capital.com/es/trade-netflix',
+  'https://capital.com/es/nio',
+  'https://capital.com/es/opera-tesla',
+  'https://capital.com/es/opera-twitter',
+  'https://capital.com/es/operar-uber'
+]
+Testing on the 'https://capital.com/es/opera-amazon' link was successfully completed
+Testing on the 'https://capital.com/es/trade-alibaba' link was successfully completed
+Testing on the 'https://capital.com/es/opera-amd' link was successfully completed

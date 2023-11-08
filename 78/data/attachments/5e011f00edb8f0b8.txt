@@ -1,0 +1,1 @@
+For test on 'Español' language the page "Education->Position Trading" doesn't exist on production
