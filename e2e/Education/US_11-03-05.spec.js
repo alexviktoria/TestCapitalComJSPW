@@ -14,7 +14,7 @@ let login;
 let pretest;
 
 const language = 'en';
-const license = 'FCA';
+const license = 'CYSEC';
 
 test.describe('US_11-03-05_Education > Menu item [Swing Trading]  on UnReg Role', () => {
   test.beforeEach(async ({ browser }) => {
