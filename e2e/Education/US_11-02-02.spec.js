@@ -15,8 +15,8 @@ let login;
 let pretest;
 
 const language = 'en';
-const country = 'United Kingdom';
-const license = 'FCA';
+const country = 'United Arab Emirates';
+const license = 'SCB';
 
 function getRandomElements(array, count) {
   const randomized = array.slice();
