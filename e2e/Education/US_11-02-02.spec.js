@@ -14,7 +14,7 @@ let signup;
 let login;
 let pretest;
 
-const language = 'fr';
+const language = 'en';
 const country = 'United Kingdom';
 const license = 'FCA';
 
