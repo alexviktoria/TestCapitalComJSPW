@@ -13,7 +13,7 @@ let signup;
 let login;
 let pretest;
 
-const language = 'fr';
+const language = 'en';
 const license = 'FCA';
 
 test.describe('US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role', () => {
