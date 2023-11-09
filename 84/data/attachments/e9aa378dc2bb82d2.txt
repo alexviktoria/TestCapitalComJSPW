@@ -1,0 +1,1 @@
+For test on FCA license the button [Trade] does not displayed 
