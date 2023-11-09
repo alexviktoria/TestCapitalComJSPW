@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const language = 'English';
-const country = 'United Arab Emirates';
+const country = 'Australia';
 
 class Header {
   constructor(page) {

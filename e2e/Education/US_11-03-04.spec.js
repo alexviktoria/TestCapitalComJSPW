@@ -14,7 +14,7 @@ let login;
 let pretest;
 
 const language = 'en';
-const license = 'SCB';
+const license = 'ASIC';
 
 test.describe('US_11-03-04_Education > Menu item [Position Trading]  on UnReg Role', () => {
   test.beforeEach(async ({ browser }) => {
