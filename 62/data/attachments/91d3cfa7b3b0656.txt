@@ -1,2 +1,0 @@
-Testing the first level on the main page is completed successfully 
-There are no links on this page and testing of the second level is impossible
