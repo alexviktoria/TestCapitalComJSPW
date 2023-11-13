@@ -4,7 +4,7 @@ import { Header } from '../../pages/header';
 import { LoginPage } from '../../pages/login';
 import { SignUpPage } from '../../pages/signup';
 import { AllButtons } from '../../pages/buttons';
-import { Pretest } from '../../pages/pretest';
+import { Pretest } from '../../pages/Pretest';
 
 let header;
 let page;
