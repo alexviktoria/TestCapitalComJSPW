@@ -48,22 +48,31 @@ class SignUpPage {
     await this.CloseSignUpFormBtn.click();
   }
 
-  async signUpFormIsVisible() {
-    await test.step('Sign Up Form is visible', async () => {
+  async signUpFormIsVisible(page) {
+    let pageUrl = page.url();
+    let urlSU = "https://capital.com/trading/signup"
+    // TODO подозреваю есть линк для демо
+    // let urlSUD = "https://capital.com/trading/signup"
+    if ( pageUrl === urlSU) {
+      console.log("open web page signup");
+      await page.goBack();
+    } else {
+      await test.step('Sign Up Form is visible', async () => {
 
-      await this.page.waitForLoadState('load');
-      await this.FormSignUp.waitFor({ state: 'visible', timeout: 5000 });
+        await this.page.waitForLoadState('load');
+        await this.FormSignUp.waitFor({ state: 'visible', timeout: 5000 });
 
-      await expect(await this.FormSignUp).toBeVisible();
-      await expect(await this.LoginLinkForm).toBeVisible();
-      await expect(await this.fieldEmail).toHaveAttribute('type', 'email');
-      await expect(await this.fieldPassword).toHaveAttribute('type', 'password');
-      await expect(await this.ContinueButton).toBeVisible();
+        await expect(await this.FormSignUp).toBeVisible();
+        await expect(await this.LoginLinkForm).toBeVisible();
+        await expect(await this.fieldEmail).toHaveAttribute('type', 'email');
+        await expect(await this.fieldPassword).toHaveAttribute('type', 'password');
+        await expect(await this.ContinueButton).toBeVisible();
 
-    });
-    await test.step('Sign Up Form is closed', async () => {
-      await this.CloseSignUpFormBtn.click();
-    });
+      });
+      await test.step('Sign Up Form is closed', async () => {
+        await this.CloseSignUpFormBtn.click();
+      });
+    }
   }
 
   async signUpFormOnPlatformIsVisible() {

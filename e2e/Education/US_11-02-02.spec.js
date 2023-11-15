@@ -8,7 +8,6 @@ import { Pretest } from '../../pages/Pretest';
 import fs from 'fs';
 
 let header;
-let page;
 let buttons;
 let signup;
 let login;
@@ -28,8 +27,10 @@ function getRandomElements(array, count) {
 }
 
 test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role', () => {
+  let context;
+  let page;
   test.beforeEach(async ({ browser }) => {
-    const context = await browser.newContext();
+    context = await browser.newContext();
     page = await context.newPage();
     header = new Header(page);
     pretest = new Pretest(page, header, login);
@@ -39,53 +40,93 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnReg Role'
     await header.clickSharesTrading();
   });
 
-  function performTest(testName, buttonClickFunction) {
+  test.afterEach(async () => {
+    // Close the current page (window) after each test
+    await page.close();
+  });
+
+  function performTest(testName, buttonClickFunction, level) {
     test(testName, async () => {
       buttons = new AllButtons(page);
       signup = new SignUpPage(page);
 
-      // first level
-      await buttonClickFunction();
-      await signup.signUpFormIsVisible();
+      async function performFunc () {
+        await buttonClickFunction();
+        // const result2 = await buttonClickFunction();
+        // console.log(result2);
+        await signup.signUpFormIsVisible(page);
+      }
 
-      console.log(`Testing the first level on the main page is completed successfully`);
-      //second level
-      await test.step('Checking for links in sidebar items', async () => {
-        const linksLocator = page.locator('a[data-type="sidebar_deeplink"]');
-        const links = await linksLocator.all();  // Convert Locator to an array
+      if (level === 1) {  // first level
+        await performFunc();
+        console.log(`Testing the first level on the main page is completed successfully`);
+      } else {  //second level
+        await test.step('Checking for links in sidebar items', async () => {
+          const linksLocator = page.locator('a[data-type="sidebar_deeplink"]');
+          const links = await linksLocator.all();  // Convert Locator to an array
+          links.length === 0
+            ? console.log('There are no links on this page and testing of the second level is impossible')
+            : console.log('links', links);
+          const randomLinks = getRandomElements(links, 3);
 
-        links.length === 0
-          ? console.log('There are no links on this page and testing of the second level is impossible')
-          : console.log('links', links);
+          for (const randomLink of randomLinks) {
+            await test.step('Accidental redirection to the page from the sidebar', async () => {
+              const randomLinkHref = await randomLink.getAttribute('href');
+              await page.goto(`${randomLinkHref}`);
+              await page.waitForURL(`${randomLinkHref}`);
 
-        const randomLinks = getRandomElements(links, 3);
+              await performFunc();
 
-        for (const randomLink of randomLinks) {
-          await test.step('Accidental redirection to the page from the sidebar', async () => {
-            const randomLinkHref = await randomLink.getAttribute('href');
-            await page.goto(randomLinkHref);
-            await page.waitForURL(`${randomLinkHref}`);
-            await buttonClickFunction();
-            await signup.signUpFormIsVisible();
-
-            links.includes(randomLink)
-              ? console.log(`Testing on the '${randomLinkHref}' link was successfully completed`)
-              : console.log(`Testing on the '${randomLinkHref}' link was failed`);
-          });
-        }
-      });
+              links.includes(randomLink)
+                ? console.log(`Testing on the '${randomLinkHref}' link was successfully completed`)
+                : console.log(`Testing on the '${randomLinkHref}' link was failed`);
+            });
+          }
+        });
+      }
     });
   }
 
-  performTest(`TC_11.02.02_01_UnReg > Test button [Start Trading] in Main banner on ${language} language`, () => buttons.clickStartTradingBtnOnMainBanner());
-  performTest(`TC_11.02.02_02_UnReg > Test button [Try Demo] in Main banner on ${language} language`, () => buttons.clickTryDemoBtnOnMainBanner());
-  performTest(`TC_11.02.02_03_UnReg > Test button [Sell] in the Banner [Trading Instrument] on ${language} language`, () => buttons.clickSellBtnOnBanner());
-  performTest(`TC_11.02.02_04_UnReg > Test button [Buy] in the Banner [Trading Instrument] on ${language} language`, () => buttons.clickBuyBtnOnBanner());
-  performTest(`TC_11.02.02_05_UnReg > Test button [Start Trading] in the Content block on ${language} language`, () => (language !== 'en' || language !== 'de' || language !== 'es' || language !== 'it') ? buttons.clickContentBlockStartTradingBtn() : null);
+  performTest(
+    `TC_11.02.02_01_UnReg > Test button [Start Trading] in Main banner on ${language} language`,
+    () => buttons.clickStartTradingBtnOnMainBanner(),
+    1
+  );
+  performTest(
+    `TC_11.02.02_02_UnReg > Test button [Try Demo] in Main banner on ${language} language`,
+    () => buttons.clickTryDemoBtnOnMainBanner(),
+    1
+  );
+  performTest(
+    `TC_11.02.02_03_UnReg > Test button [Sell] in the Banner [Trading Instrument] on ${language} language`,
+    () => buttons.clickSellBtnOnBanner(),
+    2
+  );
+  performTest(
+    `TC_11.02.02_04_UnReg > Test button [Buy] in the Banner [Trading Instrument] on ${language} language`,
+    () => buttons.clickBuyBtnOnBanner(),
+    2
+  );
+  performTest(
+    `TC_11.02.02_05_UnReg > Test button [Start Trading] in the Content block on ${language} language`,
+    () => {
+      language !== 'en' || language !== 'de' || language !== 'es' || language !== 'it'
+        ? buttons.clickContentBlockStartTradingBtn()
+        : null;
+    },
+    1,
+  );
 
+
+
+  test.afterAll(async () => {
+    // Close the browser after all tests
+    await context.close();
+  });
 });
 
 test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role', () => {
+  let page;
   test.beforeEach(async ({ browser }) => {
     const context = await browser.newContext();
     page = await context.newPage();
@@ -298,6 +339,7 @@ test.describe('US_11-02-02_Education > Menu item [Shares trading] on UnAuth Role
 });
 
 test.describe('US_11-02-02_Education > Menu item [Shares Trading] on Auth Role', () => {
+  let page;
   test.beforeEach(async ({ browser }) => {
     const context = await browser.newContext();
     page = await context.newPage();
